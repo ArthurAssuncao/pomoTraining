@@ -1,0 +1,21 @@
+{
+  "plugins": ["prettier", "react"],
+  "extends": ["airbnb-typescript", "prettier/react", ".eslintrc-base.js"],
+  "root": true,
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["_user"] }]
+  }
+}
