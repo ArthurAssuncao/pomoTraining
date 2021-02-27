@@ -1,3 +1,15 @@
+@keyframes challengeBoxIconAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .challengeBoxContainer {
   height: 100%;
   background-color: var(--white);
@@ -11,6 +23,10 @@
   justify-content: center;
 
   text-align: center;
+
+  .challengeBoxIconAnimation {
+    animation: challengeBoxIconAnimation 1s infinite;
+  }
 
   .challengeBoxActive {
     height: 100%;

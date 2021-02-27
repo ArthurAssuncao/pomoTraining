@@ -1,0 +1,44 @@
+.tooltip {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .tooltipText {
+      max-height: inherit;
+
+      width: auto;
+      height: auto;
+      opacity: 1;
+      padding: 1rem;
+    }
+  }
+
+  .toolTipElement {
+    transition: filter 0.5s ease;
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+
+  .tooltipText {
+    position: absolute;
+    display: block;
+    max-height: 0;
+    min-width: 100px;
+    overflow: hidden;
+
+    padding: 0;
+    border-radius: 10px;
+    background: #00000099;
+    color: #fff;
+    text-align: center;
+    transition: all 0.5s ease;
+  }
+
+  &.tooltipTop {
+    .tooltipText {
+      margin-top: 5px;
+      transform: translateX(-45%);
+    }
+  }
+}
