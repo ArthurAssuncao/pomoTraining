@@ -1,3 +1,9 @@
 import { ChallengesContext, ChallengesProvider } from "./ChallengesContext";
+import { CountdownContext, CountdownProvider } from "./CountdownContext";
 
-export { ChallengesProvider, ChallengesContext };
+export {
+  ChallengesProvider,
+  ChallengesContext,
+  CountdownContext,
+  CountdownProvider,
+};

@@ -10,6 +10,7 @@
       height: auto;
       opacity: 1;
       padding: 1rem;
+      font-size: inherit;
     }
   }
 
@@ -26,13 +27,14 @@
     max-height: 0;
     min-width: 100px;
     overflow: hidden;
+    font-size: 0;
 
     padding: 0;
     border-radius: 10px;
     background: #00000099;
     color: #fff;
     text-align: center;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease, font-size 0.4s ease 0.1s;
   }
 
   &.tooltipTop {

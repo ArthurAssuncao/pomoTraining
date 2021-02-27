@@ -10,7 +10,7 @@ export function ExperienceBar() {
   );
 
   const percenteToNextLevel = Math.round(
-    (currentExperience * 100) / experienceToNextLevel
+    (currentExperience * 100) / experienceToNextLevel()
   );
 
   return (
@@ -28,7 +28,7 @@ export function ExperienceBar() {
           </Tooltip>
         </span>
       </div>
-      <span>{experienceToNextLevel} xp</span>
+      <span>{experienceToNextLevel()} xp</span>
     </header>
   );
 }

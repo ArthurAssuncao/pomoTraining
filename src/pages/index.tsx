@@ -4,6 +4,7 @@ import { CompleteChallenges } from "../components/CompleteChallenges";
 import { CountDown } from "../components/Countdown";
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from "../components/Profile";
+import { CountdownProvider } from "../contexts";
 import { ChallengeBoxLayout } from "../layouts/ChallengeBoxLayout";
 import { ProfileCountDownLayout } from "../layouts/ProfileCountDownLayout";
 import styles from "./Home.module.scss";
@@ -16,16 +17,18 @@ export default function Home() {
       </Head>
 
       <ExperienceBar />
-      <section>
-        <ProfileCountDownLayout>
-          <Profile />
-          <CompleteChallenges />
-          <CountDown />
-        </ProfileCountDownLayout>
-        <ChallengeBoxLayout>
-          <ChallengeBox />
-        </ChallengeBoxLayout>
-      </section>
+      <CountdownProvider>
+        <section>
+          <ProfileCountDownLayout>
+            <Profile />
+            <CompleteChallenges />
+            <CountDown />
+          </ProfileCountDownLayout>
+          <ChallengeBoxLayout>
+            <ChallengeBox />
+          </ChallengeBoxLayout>
+        </section>
+      </CountdownProvider>
     </div>
   );
 }
