@@ -1,0 +1,105 @@
+.challengeBoxContainer {
+  height: 100%;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  .challengeBoxActive {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    header {
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 1.25rem;
+      padding: 0 2rem 1.5rem;
+      border-bottom: 1px solid var(--gray-line);
+    }
+
+    .challengeBoxContent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      strong {
+        font-weight: 600;
+        font-size: 2rem;
+        color: var(--title);
+        margin: 1.5rem 0 1rem;
+      }
+
+      p {
+        line-height: 1.5;
+      }
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      button {
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 5px;
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 600;
+        transition: filter 0.5s ease, box-shadow 0.5s ease;
+
+        &:hover {
+          filter: brightness(0.9);
+          box-shadow: 0 0 20px var(--gray-line);
+        }
+      }
+
+      .challengeBoxFailedButton {
+        background-color: var(--red);
+      }
+
+      .challengeBoxSucceededButton {
+        background-color: var(--green);
+      }
+    }
+  }
+
+  .challengeBoxNotActive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    strong {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.4;
+      max-width: 70%;
+      margin-top: 3rem;
+
+      img {
+        margin-bottom: 1rem;
+        width: 3rem;
+      }
+    }
+  }
+}
