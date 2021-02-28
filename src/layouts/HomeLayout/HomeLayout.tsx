@@ -1,5 +1,5 @@
 import Head from "next/head";
-import logo from "../../assets/img/icons/pomoTraining-icon.svg";
+import logo from "../../assets/img/icons/pomoTraining-icon-128.png";
 import { ChallengeBox } from "../../components/ChallengeBox";
 import { CompleteChallenges } from "../../components/CompleteChallenges";
 import { CountDown } from "../../components/Countdown";
