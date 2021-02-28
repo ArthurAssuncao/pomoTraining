@@ -1,0 +1,45 @@
+.container {
+  height: 100vh;
+  max-width: 576px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 992px) {
+    max-width: 992px;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    gap: 1rem;
+    align-content: center;
+  }
+
+  .main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-content: center;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 6.25rem;
+    }
+
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+    }
+  }
+}
