@@ -38,6 +38,11 @@ body {
   --blue-twitter: #2aa9e0;
 }
 
+::selection {
+  color: var(--background);
+  background-color: var(--blue);
+}
+
 @media (max-width: 1080px) {
   html {
     font-size: 93.75%;
