@@ -33,7 +33,7 @@
 
   .header {
     display: grid;
-    grid-template-columns: 1fr 0.1fr;
+    grid-template-columns: 1fr 0.05fr;
     gap: 1rem;
     align-content: center;
   }
@@ -42,7 +42,7 @@
     flex: 1;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 0rem;
     align-content: center;
 
     // Small devices (landscape phones, 576px and up)
