@@ -1,18 +1,6 @@
 import { GetServerSideProps } from "next";
-import Head from "next/head";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { CompleteChallenges } from "../components/CompleteChallenges";
-import { CountDown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import {
-  ChallengesProvider,
-  CountdownProvider,
-  ThemeToggler,
-} from "../contexts";
-import { ChallengeBoxLayout } from "../layouts/ChallengeBoxLayout";
-import { ProfileCountDownLayout } from "../layouts/ProfileCountDownLayout";
-import styles from "./Home.module.scss";
+import { ChallengesProvider } from "../contexts";
+import { HomeLayout } from "../layouts/HomeLayout";
 
 interface UserCookieProps {
   level: number;
@@ -27,27 +15,7 @@ export default function Home(props: UserCookieProps) {
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
     >
-      <div className={styles.container}>
-        <Head>
-          <title>Início | PomoTraining</title>
-        </Head>
-        <header className={styles.header}>
-          <ExperienceBar />
-          <ThemeToggler />
-        </header>
-        <CountdownProvider>
-          <main className={styles.main}>
-            <ProfileCountDownLayout>
-              <Profile />
-              <CompleteChallenges />
-              <CountDown />
-            </ProfileCountDownLayout>
-            <ChallengeBoxLayout>
-              <ChallengeBox />
-            </ChallengeBoxLayout>
-          </main>
-        </CountdownProvider>
-      </div>
+      <HomeLayout />
     </ChallengesProvider>
   );
 }
