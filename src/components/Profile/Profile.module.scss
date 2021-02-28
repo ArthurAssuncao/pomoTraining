@@ -1,6 +1,10 @@
 .container {
   display: flex;
   align-items: center;
+  background-color: var(--background2);
+  border-radius: 5px;
+  box-shadow: 0 0 60px var(--container-shadow);
+  padding: 1rem 2rem;
 
   .photo {
     width: 5.5rem;

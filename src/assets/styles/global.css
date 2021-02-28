@@ -21,6 +21,7 @@ body {
   --blue: #8a47f5;
   --blue-dark: #6232af;
   --blue-twitter: #2aa9e0;
+  --container-shadow: rgba(0, 0, 0, 0.05);
 }
 
 :root body[data-theme="dark"] {
@@ -36,6 +37,7 @@ body {
   --blue: #8a47f5;
   --blue-dark: #6232af;
   --blue-twitter: #2aa9e0;
+  --container-shadow: rgba(255, 255, 255, 0);
 }
 
 ::selection {

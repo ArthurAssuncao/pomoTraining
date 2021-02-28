@@ -1,4 +1,5 @@
 import Head from "next/head";
+import logo from "../../assets/img/icons/pomoTraining-icon.svg";
 import { ChallengeBox } from "../../components/ChallengeBox";
 import { CompleteChallenges } from "../../components/CompleteChallenges";
 import { CountDown } from "../../components/Countdown";
@@ -17,6 +18,14 @@ const HomeLayout = () => {
         <title>Início | PomoTraining</title>
       </Head>
       <header className={styles.header}>
+        <div className={styles.appInfo}>
+          <img
+            className={styles.appLogo}
+            src={logo}
+            alt="Logo do PomoTraining"
+          />
+          <h1 className={styles.appName}>PomoTraining</h1>
+        </div>
         <ExperienceBar />
         <ThemeToggler />
       </header>

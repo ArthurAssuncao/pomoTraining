@@ -14,7 +14,7 @@
   height: 100%;
   background-color: var(--background2);
   border-radius: 5px;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 60px var(--container-shadow);
   padding: 1.5rem 2rem;
 
   display: flex;
