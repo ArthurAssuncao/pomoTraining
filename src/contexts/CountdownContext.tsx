@@ -25,6 +25,7 @@ const CountdownContext = createContext({} as CountdownContextData);
 function CountdownProvider({ children }: CountdownProviderProps) {
   const { startNewChallenge } = useContext(ChallengesContext);
 
+  // ToDo fix this
   const defaultTime = 0.1 * 60;
   const [time, setTime] = useState(defaultTime);
   const [isActive, setIsActive] = useState(false);
