@@ -1,3 +1,15 @@
+@keyframes buttonAnimation {
+  0% {
+    border: 1px dashed var(--red);
+  }
+  50% {
+    border: 2px dotted var(--red);
+  }
+  100% {
+    border: 1px dashed var(--red);
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -79,9 +91,10 @@
     }
 
     &.isActive {
-      background-color: var(--white);
+      background-color: var(--background2);
       color: var(--title);
       transition: background-color 1s, box-shadow 1s;
+      animation: buttonAnimation 1s infinite;
 
       &:hover {
         background-color: var(--red);
