@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CountdownContext } from "../../contexts";
 import styles from "./Countdown.module.scss";
 
-export function CountDown() {
+const CountDown = () => {
   const {
     minutes,
     seconds,
@@ -16,30 +16,30 @@ export function CountDown() {
   const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
 
   return (
-    <div className={styles.countDownContainer}>
-      <div className={styles.countDownTime}>
-        <div>
-          <span>{minuteLeft}</span>
-          <span>{minuteRight}</span>
+    <div className={styles.container}>
+      <div className={styles.time}>
+        <div className={styles.timeUnitContainer}>
+          <span className={styles.timeUnit}>{minuteLeft}</span>
+          <span className={styles.timeUnit}>{minuteRight}</span>
         </div>
-        <span>:</span>
-        <div>
-          <span>{secondLeft}</span>
-          <span>{secondRight}</span>
+        <span className={styles.timeUnitSeparator}>:</span>
+        <div className={styles.timeUnitContainer}>
+          <span className={styles.timeUnit}>{secondLeft}</span>
+          <span className={styles.timeUnit}>{secondRight}</span>
         </div>
       </div>
 
       {hasFinished ? (
-        <button disabled className={styles.countDownButton}>
+        <button disabled className={styles.button}>
           Ciclo encerrado
-          <i className={styles.countDownIconFinished}>&#10003;</i>
+          <i className={styles.buttonIconFinished}>&#10003;</i>
         </button>
       ) : (
         <>
           {isActive ? (
             <button
               type="button"
-              className={`${styles.countDownButton} ${styles.isActive}`}
+              className={`${styles.button} ${styles.isActive}`}
               onClick={resetCountDown}
             >
               Abandonar Ciclo
@@ -47,7 +47,7 @@ export function CountDown() {
           ) : (
             <button
               type="button"
-              className={styles.countDownButton}
+              className={styles.button}
               onClick={startCountDown}
             >
               Iniciar um ciclo
@@ -57,4 +57,6 @@ export function CountDown() {
       )}
     </div>
   );
-}
+};
+
+export { CountDown };

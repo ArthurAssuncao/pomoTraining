@@ -5,7 +5,11 @@ import { CompleteChallenges } from "../components/CompleteChallenges";
 import { CountDown } from "../components/Countdown";
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from "../components/Profile";
-import { ChallengesProvider, CountdownProvider } from "../contexts";
+import {
+  ChallengesProvider,
+  CountdownProvider,
+  ThemeToggler,
+} from "../contexts";
 import { ChallengeBoxLayout } from "../layouts/ChallengeBoxLayout";
 import { ProfileCountDownLayout } from "../layouts/ProfileCountDownLayout";
 import styles from "./Home.module.scss";
@@ -27,10 +31,12 @@ export default function Home(props: UserCookieProps) {
         <Head>
           <title>Início | PomoTraining</title>
         </Head>
-
-        <ExperienceBar />
+        <header className={styles.header}>
+          <ExperienceBar />
+          <ThemeToggler />
+        </header>
         <CountdownProvider>
-          <section>
+          <main className={styles.main}>
             <ProfileCountDownLayout>
               <Profile />
               <CompleteChallenges />
@@ -39,7 +45,7 @@ export default function Home(props: UserCookieProps) {
             <ChallengeBoxLayout>
               <ChallengeBox />
             </ChallengeBoxLayout>
-          </section>
+          </main>
         </CountdownProvider>
       </div>
     </ChallengesProvider>

@@ -1,27 +1,27 @@
-.profileContainer {
+.container {
   display: flex;
   align-items: center;
 
-  > img {
+  .photo {
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
   }
 
-  div {
+  .nameContainer {
     margin-left: 1.5rem;
 
-    strong {
+    name {
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--title);
     }
 
-    p {
+    .nameIconWrapper {
       font-size: 1rem;
       margin-top: 0.5rem;
 
-      img {
+      .nameIcon {
         margin-right: 0.5rem;
       }
     }

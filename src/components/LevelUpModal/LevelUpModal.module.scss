@@ -1,4 +1,4 @@
-@keyframes clevelUpModalIconAnimation {
+@keyframes iconAnimation {
   0% {
     transform: scale(1, 1);
   }
@@ -31,38 +31,38 @@
     text-align: center;
     position: relative;
 
-    header {
+    .header {
       font-size: 8.75rem;
       font-weight: 600;
       color: var(--blue);
       background: url("../../assets/img/icons/levelup.svg") no-repeat center;
       background-size: contain;
-      animation: clevelUpModalIconAnimation 1.5s infinite;
+      animation: iconAnimation 1.5s infinite;
     }
 
-    strong {
+    .title {
       font-size: 2.25rem;
       color: var(--title);
       margin-top: 0.25rem;
     }
 
-    p {
+    .description {
       font-size: 1.25rem;
       color: var(--text);
       margin-top: 0.25rem;
     }
 
-    button {
+    .button {
       position: absolute;
       right: 0.5rem;
       top: 0.5rem;
       background-color: transparent;
       border: 0;
       font-size: 0;
-      img {
+      .buttonIcon {
         transition: box-shadow 0.5s ease;
       }
-      &:hover img {
+      &:hover .buttonIcon {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
     }

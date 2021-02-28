@@ -3,18 +3,24 @@ import levelIcon from "../../assets/img/icons/level.svg";
 import { ChallengesContext } from "../../contexts";
 import styles from "./Profile.module.scss";
 
-export function Profile() {
+const Profile = () => {
   const { level } = useContext(ChallengesContext);
   return (
-    <div className={styles.profileContainer}>
-      <img src="https://github.com/arthurassuncao.png" alt="Profile" />
-      <div>
-        <strong>Arthur Assuncao</strong>
-        <p>
-          <img src={levelIcon} alt="Profile icon" />
+    <div className={styles.container}>
+      <img
+        className={styles.photo}
+        src="https://github.com/arthurassuncao.png"
+        alt="Profile"
+      />
+      <div className={styles.nameContainer}>
+        <strong className={styles.name}>Arthur Assuncao</strong>
+        <p className={styles.nameIconWrapper}>
+          <img className={styles.nameIcon} src={levelIcon} alt="Profile icon" />
           Level {level}
         </p>
       </div>
     </div>
   );
-}
+};
+
+export { Profile };

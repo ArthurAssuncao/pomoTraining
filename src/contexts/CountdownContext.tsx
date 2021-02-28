@@ -22,7 +22,7 @@ interface CountdownProviderProps {
 
 const CountdownContext = createContext({} as CountdownContextData);
 
-function CountdownProvider({ children }: CountdownProviderProps) {
+const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext);
 
   // ToDo fix this
@@ -73,6 +73,6 @@ function CountdownProvider({ children }: CountdownProviderProps) {
       {children}
     </CountdownContext.Provider>
   );
-}
+};
 
 export { CountdownContext, CountdownProvider };

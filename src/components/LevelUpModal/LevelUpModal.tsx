@@ -8,14 +8,18 @@ const LevelUpModal = () => {
   return (
     <div className={styles.overlay}>
       <section className={styles.container}>
-        <header>{level}</header>
+        <header className={styles.header}>{level}</header>
 
-        <strong>Parabéns</strong>
+        <strong className={styles.title}>Parabéns</strong>
 
-        <p>Você alcançou um novo level.</p>
+        <p className={styles.description}>Você alcançou um novo level.</p>
 
-        <button type="button" onClick={closeLevelUpModal}>
-          <img src={closeIcon} alt="Fechar" />
+        <button
+          className={styles.button}
+          type="button"
+          onClick={closeLevelUpModal}
+        >
+          <img className={styles.buttonIcon} src={closeIcon} alt="Fechar" />
         </button>
       </section>
     </div>

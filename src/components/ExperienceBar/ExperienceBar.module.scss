@@ -1,24 +1,24 @@
-.experienceBar {
+.container {
   display: flex;
   align-items: center;
 
-  span {
+  .initialExperience,
+  .targetExperience {
     font-size: 1rem;
   }
 
-  > div {
+  .bar {
     flex: 1;
     height: 4px;
     border-radius: 4px;
     background-color: var(--gray-line);
     margin: 0 1.5rem;
     position: relative;
-  }
-
-  > div > div {
-    height: 4px;
-    border-radius: 4px;
-    background-color: var(--green);
+    .barFill {
+      height: 4px;
+      border-radius: 4px;
+      background-color: var(--green);
+    }
   }
 
   .currentExperience {

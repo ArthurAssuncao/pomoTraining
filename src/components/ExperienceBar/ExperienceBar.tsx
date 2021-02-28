@@ -4,7 +4,7 @@ import { ChallengesContext } from "../../contexts";
 import { Tooltip } from "../Tooltip";
 import styles from "./ExperienceBar.module.scss";
 
-export function ExperienceBar() {
+const ExperienceBar = () => {
   const { currentExperience, experienceToNextLevel } = useContext(
     ChallengesContext
   );
@@ -15,10 +15,13 @@ export function ExperienceBar() {
       : 0;
 
   return (
-    <header className={styles.experienceBar}>
-      <span>0 xp</span>
-      <div>
-        <div style={{ width: `${percenteToNextLevel}%` }}></div>
+    <section className={styles.container}>
+      <span className={styles.initialExperience}>0 xp</span>
+      <div className={styles.bar}>
+        <div
+          className={styles.barFill}
+          style={{ width: `${percenteToNextLevel}%` }}
+        ></div>
         <span
           className={styles.currentExperience}
           style={{ left: `${percenteToNextLevel}%` }}
@@ -29,7 +32,11 @@ export function ExperienceBar() {
           </Tooltip>
         </span>
       </div>
-      <span>{experienceToNextLevel()} xp</span>
-    </header>
+      <span className={styles.targetExperience}>
+        {experienceToNextLevel()} xp
+      </span>
+    </section>
   );
-}
+};
+
+export { ExperienceBar };

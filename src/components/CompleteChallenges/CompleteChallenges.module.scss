@@ -1,4 +1,4 @@
-.complementeChallengesContainer {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,11 +7,11 @@
   border-bottom: 1px solid #d7d8da;
   font-weight: 500;
 
-  span:first-child {
+  .label:first-child {
     font-size: 1.25rem;
   }
 
-  span:last-child {
+  .value:last-child {
     font-size: 1.5rem;
   }
 }
