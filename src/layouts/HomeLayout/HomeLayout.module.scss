@@ -11,6 +11,26 @@
     max-width: 992px;
   }
 
+  .appInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / 3;
+
+    .appLogo {
+      width: 48px;
+      object-fit: contain;
+      height: auto;
+      margin: 0 1rem;
+      filter: drop-shadow(0 0 5px var(--text-highlight));
+      opacity: 0.95;
+    }
+    .appName {
+      color: var(--blue);
+      font-style: italic;
+    }
+  }
+
   .header {
     display: grid;
     grid-template-columns: 1fr 0.1fr;
