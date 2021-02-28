@@ -7,6 +7,7 @@ import { Profile } from "../../components/Profile";
 import { CountdownProvider, ThemeToggler } from "../../contexts";
 import { ChallengeBoxLayout } from "../../layouts/ChallengeBoxLayout";
 import { ProfileCountDownLayout } from "../../layouts/ProfileCountDownLayout";
+import { Footer } from "../Footer";
 import styles from "./HomeLayout.module.scss";
 
 const HomeLayout = () => {
@@ -31,6 +32,7 @@ const HomeLayout = () => {
           </ChallengeBoxLayout>
         </main>
       </CountdownProvider>
+      <Footer />
     </div>
   );
 };
