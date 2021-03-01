@@ -1,4 +1,4 @@
-@keyframes challengeBoxIconAnimation {
+@keyframes iconAnimation {
   0% {
     transform: translateY(0px);
   }
@@ -10,11 +10,11 @@
   }
 }
 
-.challengeBoxContainer {
+.container {
   height: 100%;
-  background-color: var(--white);
+  background-color: var(--background2);
   border-radius: 5px;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 60px var(--container-shadow);
   padding: 1.5rem 2rem;
 
   display: flex;
@@ -24,16 +24,12 @@
 
   text-align: center;
 
-  .challengeBoxIconAnimation {
-    animation: challengeBoxIconAnimation 1s infinite;
-  }
-
-  .challengeBoxActive {
+  .active {
     height: 100%;
     display: flex;
     flex-direction: column;
 
-    header {
+    .header {
       color: var(--blue);
       font-weight: 600;
       font-size: 1.25rem;
@@ -41,31 +37,31 @@
       border-bottom: 1px solid var(--gray-line);
     }
 
-    .challengeBoxContent {
+    .content {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
 
-      strong {
+      .contentTitle {
         font-weight: 600;
         font-size: 2rem;
         color: var(--title);
         margin: 1.5rem 0 1rem;
       }
 
-      p {
+      .contentDescription {
         line-height: 1.5;
       }
     }
 
-    footer {
+    .footer {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
 
-      button {
+      .button {
         height: 3rem;
         display: flex;
         align-items: center;
@@ -83,38 +79,46 @@
         }
       }
 
-      .challengeBoxFailedButton {
+      .buttonFailed {
         background-color: var(--red);
       }
 
-      .challengeBoxSucceededButton {
+      .buttonSucceeded {
         background-color: var(--green);
       }
     }
   }
 
-  .challengeBoxNotActive {
+  .notActive {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    strong {
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    p {
+    .content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      line-height: 1.4;
-      max-width: 70%;
-      margin-top: 3rem;
+      .contentTitle {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.4;
+      }
 
-      img {
-        margin-bottom: 1rem;
-        width: 3rem;
+      .contentDescription {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.4;
+        max-width: 70%;
+        margin-top: 3rem;
+
+        .contentIcon {
+          margin-bottom: 1rem;
+          width: 3rem;
+          &.iconAnimation {
+            animation: iconAnimation 1s infinite;
+          }
+        }
       }
     }
   }

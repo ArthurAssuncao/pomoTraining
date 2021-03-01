@@ -1,17 +1,19 @@
-.complementeChallengesContainer {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 3.5rem 0;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #d7d8da;
+  margin: 3rem 0;
   font-weight: 500;
+  background-color: var(--background2);
+  border-radius: 5px;
+  box-shadow: 0 0 60px var(--container-shadow);
+  padding: 1rem 2rem;
 
-  span:first-child {
+  .label:first-child {
     font-size: 1.25rem;
   }
 
-  span:last-child {
+  .value:last-child {
     font-size: 1.5rem;
   }
 }

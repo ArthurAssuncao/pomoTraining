@@ -1,0 +1,177 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+  background-color: var(--title);
+
+  .container {
+    z-index: 999;
+    background-image: linear-gradient(to bottom, var(--blue), var(--blue-dark));
+    width: 100vw;
+    min-height: 100vh;
+    @media (min-width: 992px) {
+      width: 99vw;
+      height: 98vh;
+    }
+    padding: 2rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0 0 60px var(--container-shadow);
+    text-align: center;
+    position: relative;
+    color: var(--white);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 10px var(--blue);
+
+    @media (min-width: 992px) {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .containerMsg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80%;
+      font-size: 3rem;
+      color: var(--white);
+      .msg {
+      }
+    }
+
+    .containerData {
+      color: var(--white);
+      height: 70%;
+      .appInfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media (min-width: 992px) {
+          justify-content: flex-start;
+        }
+
+        > * {
+          margin: 4rem 0;
+        }
+
+        .appName {
+          font-size: 3rem;
+          font-style: italic;
+          color: var(--white);
+          font-weight: bold;
+        }
+
+        .appIcon {
+          width: 72px;
+          margin-right: 1rem;
+        }
+      }
+      .loginContainer {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 992px) {
+          align-items: flex-start;
+        }
+
+        .loginBemvindo {
+          margin: 1rem 0;
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        .loginGithubContainer {
+          margin: 1rem 0;
+
+          .loginGithubDataContainer {
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+            .loginGithubMsg {
+              width: 80%;
+              text-align: left;
+            }
+
+            .loginGithubIcon {
+              width: 32px;
+              margin-right: 1rem;
+              filter: invert(1) brightness(100);
+            }
+          }
+
+          .loginFields {
+            width: 100%;
+            @media (min-width: 992px) {
+              width: 88%;
+            }
+            background-color: var(--blue-dark);
+            border: none;
+            display: flex;
+            border-radius: 5px;
+            margin: 2rem 0;
+            .loginField {
+              padding: 1rem;
+              height: 5rem;
+              @media (min-width: 992px) {
+                height: 4rem;
+              }
+              border: none;
+              background-color: transparent;
+              color: var(--white);
+              flex: 2;
+              transition: box-shadow 0.5s ease;
+
+              &:focus {
+                outline: none;
+                box-shadow: 0 0 20px var(--blue);
+              }
+              &::placeholder {
+                color: var(--white);
+                opacity: 0.9;
+              }
+            }
+            .loginButton {
+              height: 5rem;
+              width: 5rem;
+              @media (min-width: 992px) {
+                height: 4rem;
+                width: 4rem;
+              }
+              background-color: var(--green);
+              border: 0;
+              border-top-right-radius: 5px;
+              border-bottom-right-radius: 5px;
+              transition: filter 0.5s ease, box-shadow 0.5s ease;
+
+              &:hover {
+                filter: brightness(1.1);
+                box-shadow: 0 0 10px var(--green);
+              }
+
+              .loginButtonIcon {
+                color: var(--white);
+                filter: brightness(100);
+                width: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

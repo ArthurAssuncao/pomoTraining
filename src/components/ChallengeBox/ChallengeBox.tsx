@@ -5,7 +5,7 @@ import levelUP from "../../assets/img/icons/level-up.svg";
 import { ChallengesContext, CountdownContext } from "../../contexts";
 import styles from "./ChallengeBox.module.scss";
 
-export function ChallengeBox() {
+const ChallengeBox = () => {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(
     ChallengesContext
   );
@@ -22,29 +22,33 @@ export function ChallengeBox() {
   };
 
   return (
-    <div className={styles.challengeBoxContainer}>
+    <div className={styles.container}>
       {activeChallenge ? (
-        <section className={styles.challengeBoxActive}>
-          <header>Ganhe {activeChallenge.amount} xp</header>
+        <section className={styles.active}>
+          <header className={styles.header}>
+            Ganhe {activeChallenge.amount} xp
+          </header>
 
-          <article className={styles.challengeBoxContent}>
+          <article className={styles.content}>
             {activeChallenge.type === "body" && <img src={body} alt="" />}
             {activeChallenge.type === "eye" && <img src={eye} alt="" />}
-            <strong>Novo desafio</strong>
-            <p>{activeChallenge.description}</p>
+            <strong className={styles.contentTitle}>Novo desafio</strong>
+            <p className={styles.contentDescription}>
+              {activeChallenge.description}
+            </p>
           </article>
 
-          <footer>
+          <footer className={styles.footer}>
             <button
               type="button"
-              className={styles.challengeBoxFailedButton}
+              className={`${styles.button} ${styles.buttonFailed}`}
               onClick={handleChallengeFailed}
             >
               Falhei
             </button>
             <button
               type="button"
-              className={styles.challengeBoxSucceededButton}
+              className={`${styles.button} ${styles.buttonSucceeded}`}
               onClick={handleChallengeSucceeded}
             >
               Completei
@@ -52,20 +56,24 @@ export function ChallengeBox() {
           </footer>
         </section>
       ) : (
-        <div className={styles.challengeBoxNotActive}>
-          <strong>
-            Finalize um ciclo para receber desafios a serem completados
-          </strong>
-          <p>
-            <img
-              src={levelUP}
-              alt="Level Up"
-              className={styles.challengeBoxIconAnimation}
-            />
-            Avance de level completando desafios
-          </p>
+        <div className={styles.notActive}>
+          <article className={styles.content}>
+            <strong className={styles.contentTitle}>
+              Finalize um ciclo para receber desafios a serem completados
+            </strong>
+            <p className={styles.contentDescription}>
+              <img
+                src={levelUP}
+                alt="Level Up"
+                className={`${styles.contentIcon} ${styles.iconAnimation}`}
+              />
+              Avance de level completando desafios
+            </p>
+          </article>
         </div>
       )}
     </div>
   );
-}
+};
+
+export { ChallengeBox };

@@ -4,6 +4,8 @@ import challenges from "../assets/data/challenges.json";
 import notificationIcon from "../assets/img/icons/level.svg";
 import notificationAudio from "../assets/sound/notification.mp3";
 import { LevelUpModal } from "../components/LevelUpModal";
+import { LoginModal } from "../components/LoginModal";
+import { GithubApi, GithubUserData } from "../services/GithubApi";
 
 interface Challenge {
   type: string;
@@ -12,6 +14,8 @@ interface Challenge {
 }
 
 interface ChallengesContextData {
+  user: GithubUserData;
+  githubUsername: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -22,10 +26,12 @@ interface ChallengesContextData {
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeLevelUpModal: () => void;
+  setGithubUsername: (username: string) => void;
 }
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  githubUsername: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -33,7 +39,14 @@ interface ChallengesProviderProps {
 
 const ChallengesContext = createContext({} as ChallengesContextData);
 
-function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
+const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
+  const userLocalStorage: GithubUserData = process.browser
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
+  const [user, setUser] = useState(userLocalStorage ?? null);
+  const [githubUsername, setGithubUsernamePrivate] = useState(
+    rest.githubUsername ?? ""
+  );
   const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
@@ -51,10 +64,14 @@ function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
   }, []);
 
   useEffect(() => {
+    if (user && process.browser) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+    Cookies.set("githubUsername", String(githubUsername));
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
     Cookies.set("challengesCompleted", String(challengesCompleted));
-  }, [level, currentExperience, challengesCompleted]);
+  }, [user, githubUsername, level, currentExperience, challengesCompleted]);
 
   const experienceToNextLevel = (): number => {
     return Math.pow((level + 1) * 4, 2);
@@ -109,9 +126,20 @@ function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
     setChallengesCompleted(challengesCompleted + 1);
   };
 
+  const setGithubUsername = async (name: string) => {
+    setGithubUsernamePrivate(name);
+    const githubApi = GithubApi;
+    const userPromise: Promise<GithubUserData> = githubApi.user(name);
+    const user: GithubUserData = await userPromise;
+    setGithubUsernamePrivate(user.username);
+    setUser(user);
+  };
+
   return (
     <ChallengesContext.Provider
       value={{
+        user,
+        githubUsername,
         level,
         currentExperience,
         challengesCompleted,
@@ -122,12 +150,13 @@ function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
         resetChallenge,
         completeChallenge,
         closeLevelUpModal,
+        setGithubUsername,
       }}
     >
-      {children}
+      {!githubUsername ? <LoginModal /> : children}
       {isLevelUpModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );
-}
+};
 
 export { ChallengesProvider, ChallengesContext };
