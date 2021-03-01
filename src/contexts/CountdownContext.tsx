@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import {
   createContext,
   ReactNode,
@@ -6,7 +7,6 @@ import {
   useState,
 } from "react";
 import { ChallengesContext } from "./ChallengesContext";
-
 interface CountdownContextData {
   maxMinutes: number;
   minutes: number;
@@ -15,6 +15,7 @@ interface CountdownContextData {
   isActive: boolean;
   startCountDown: () => void;
   resetCountDown: () => void;
+  setMaxMinutes: (value: number) => void;
 }
 
 interface CountdownProviderProps {
@@ -26,10 +27,18 @@ const CountdownContext = createContext({} as CountdownContextData);
 const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext);
 
-  // ToDo fix this
-  const maxMinutes = 25;
-  const defaultTime = maxMinutes * 60;
-  const [time, setTime] = useState(defaultTime);
+  const [maxMinutes, setMaxMinutesPrivate] = useState(
+    Cookies.get("maxMinutes") && !isNaN(Number(Cookies.get("maxMinutes")))
+      ? Number(Cookies.get("maxMinutes"))
+      : 25
+  );
+  const calcTime = (newTime: number) => {
+    return newTime * 60;
+  };
+  const defaultTime = () => {
+    return calcTime(maxMinutes);
+  };
+  const [time, setTime] = useState(defaultTime());
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
 
@@ -50,15 +59,29 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
     }
   }, [isActive, time]);
 
+  useEffect(() => {
+    Cookies.set("maxMinutes", String(maxMinutes));
+  }, [maxMinutes]);
+
   const startCountDown = () => {
     setIsActive(true);
   };
 
   const resetCountDown = () => {
-    clearTimeout(countDownTimeout);
+    if (countDownTimeout) {
+      clearTimeout(countDownTimeout);
+    }
     setIsActive(false);
     setHasFinished(false);
-    setTime(defaultTime);
+    setTime(defaultTime());
+  };
+
+  const setMaxMinutes = (newMinutes: number) => {
+    if (newMinutes > 0) {
+      setMaxMinutesPrivate(newMinutes);
+      setTime(calcTime(maxMinutes));
+      resetCountDown();
+    }
   };
 
   return (
@@ -71,6 +94,7 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
         isActive,
         startCountDown,
         resetCountDown,
+        setMaxMinutes,
       }}
     >
       {children}

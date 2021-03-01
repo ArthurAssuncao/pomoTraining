@@ -1,0 +1,99 @@
+.container {
+  background-color: var(--background);
+  min-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  @media (min-width: 992px) {
+    padding: 0rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    height: var(--height);
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  @media (min-width: 1200px) {
+    min-width: initial;
+  }
+
+  --height: 4rem;
+  --border-size: 2px;
+  --height-without-border: calc(var(--height) - calc(var(--border-size) * 2));
+
+  border-radius: 5px;
+  border: var(--border-size) solid var(--background2);
+
+  > * {
+    border-left: calc(var(--border-size) * 2) solid var(--background2);
+    border-right: calc(var(--border-size) * 2) solid var(--background2);
+  }
+
+  .valueCurrentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .valueCurrentIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      margin: 0 0.5rem;
+
+      img {
+        width: 24px;
+        border-radius: 50%;
+      }
+      &:empty::after {
+        content: ".";
+        visibility: hidden;
+      }
+    }
+
+    .valueCurrent {
+      line-height: var(--height-without-border);
+      color: var(--title);
+    }
+  }
+
+  .valueNew {
+    border: none;
+    background-color: var(--background);
+    padding: 0 1rem;
+    color: var(--title);
+    line-height: var(--height-without-border);
+    align-self: flex-start;
+    &:focus {
+      outline-color: var(--gray-line);
+    }
+  }
+
+  .valueSaveButton {
+    top: 0;
+    border: none;
+    height: var(--height-without-border);
+    color: var(--white);
+    background-color: var(--blue);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: background-color 0.5s ease;
+    align-self: flex-start;
+
+    width: 100%;
+    @media (min-width: 992px) {
+      width: auto;
+    }
+
+    &:hover {
+      background-color: var(--blue-dark);
+    }
+  }
+}

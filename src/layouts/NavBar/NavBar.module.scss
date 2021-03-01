@@ -1,3 +1,9 @@
+body[data-theme="dark"] {
+  .menuIcon {
+    filter: invert(1);
+  }
+}
+
 .container {
   padding: 1rem 0;
   position: fixed;
