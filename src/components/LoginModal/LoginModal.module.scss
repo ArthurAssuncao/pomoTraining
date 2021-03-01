@@ -14,7 +14,7 @@
     z-index: 999;
     background-image: linear-gradient(to bottom, var(--blue), var(--blue-dark));
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     @media (min-width: 992px) {
       width: 99vw;
       height: 98vh;
