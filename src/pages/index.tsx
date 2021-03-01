@@ -3,6 +3,7 @@ import { ChallengesProvider } from "../contexts";
 import { HomeLayout } from "../layouts/HomeLayout";
 
 interface UserCookieProps {
+  githubUsername: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -11,6 +12,7 @@ interface UserCookieProps {
 export default function Home(props: UserCookieProps) {
   return (
     <ChallengesProvider
+      githubUsername={props.githubUsername}
       level={props.level}
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
@@ -23,10 +25,16 @@ export default function Home(props: UserCookieProps) {
 export const getServerSideProps: GetServerSideProps = async (
   context
 ): Promise<{ props: UserCookieProps }> => {
-  const { level, currentExperience, challengesCompleted } = context.req.cookies;
+  const {
+    githubUsername,
+    level,
+    currentExperience,
+    challengesCompleted,
+  } = context.req.cookies;
 
   return {
     props: {
+      githubUsername: githubUsername ?? "",
       level: level ? Number(level) : 1,
       currentExperience: currentExperience ? Number(currentExperience) : 0,
       challengesCompleted: challengesCompleted

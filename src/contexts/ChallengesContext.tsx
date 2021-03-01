@@ -4,6 +4,7 @@ import challenges from "../assets/data/challenges.json";
 import notificationIcon from "../assets/img/icons/level.svg";
 import notificationAudio from "../assets/sound/notification.mp3";
 import { LevelUpModal } from "../components/LevelUpModal";
+import { LoginModal } from "../components/LoginModal";
 
 interface Challenge {
   type: string;
@@ -12,6 +13,7 @@ interface Challenge {
 }
 
 interface ChallengesContextData {
+  githubUsername: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -22,10 +24,12 @@ interface ChallengesContextData {
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeLevelUpModal: () => void;
+  setGithubUsername: (username: string) => void;
 }
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  githubUsername: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -34,6 +38,9 @@ interface ChallengesProviderProps {
 const ChallengesContext = createContext({} as ChallengesContextData);
 
 const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
+  const [githubUsername, setGithubUsername] = useState(
+    rest.githubUsername ?? ""
+  );
   const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
@@ -51,10 +58,11 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
   }, []);
 
   useEffect(() => {
+    Cookies.set("githubUsername", String(githubUsername));
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
     Cookies.set("challengesCompleted", String(challengesCompleted));
-  }, [level, currentExperience, challengesCompleted]);
+  }, [githubUsername, level, currentExperience, challengesCompleted]);
 
   const experienceToNextLevel = (): number => {
     return Math.pow((level + 1) * 4, 2);
@@ -112,6 +120,7 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
   return (
     <ChallengesContext.Provider
       value={{
+        githubUsername,
         level,
         currentExperience,
         challengesCompleted,
@@ -122,9 +131,10 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
         resetChallenge,
         completeChallenge,
         closeLevelUpModal,
+        setGithubUsername,
       }}
     >
-      {children}
+      {!githubUsername ? <LoginModal /> : children}
       {isLevelUpModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );
