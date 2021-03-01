@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import { ChallengesProvider } from "../contexts";
 import { HomeLayout } from "../layouts/HomeLayout";
-import { NavBar } from "../layouts/NavBar";
 
 interface UserCookieProps {
   githubUsername: string;
@@ -18,7 +17,6 @@ export default function Home(props: UserCookieProps) {
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
     >
-      <NavBar />
       <HomeLayout />
     </ChallengesProvider>
   );

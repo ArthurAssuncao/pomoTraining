@@ -1,25 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import levelIcon from "../../assets/img/icons/level.svg";
 import { ChallengesContext } from "../../contexts";
-import { GithubApi, GithubUserData } from "../../services/GithubApi";
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
-  const { level, githubUsername, user, setUser } = useContext(
-    ChallengesContext
-  );
-
-  useEffect(() => {
-    if (!user) {
-      fetchGithubUserData();
-    }
-  }, []);
-
-  const fetchGithubUserData = async () => {
-    const githubApi = GithubApi;
-    const user: Promise<GithubUserData> = githubApi.user(githubUsername);
-    setUser(await user);
-  };
+  const { level, githubUsername, user } = useContext(ChallengesContext);
 
   return (
     <div className={styles.container}>

@@ -5,7 +5,7 @@ import notificationIcon from "../assets/img/icons/level.svg";
 import notificationAudio from "../assets/sound/notification.mp3";
 import { LevelUpModal } from "../components/LevelUpModal";
 import { LoginModal } from "../components/LoginModal";
-import { GithubUserData } from "../services/GithubApi";
+import { GithubApi, GithubUserData } from "../services/GithubApi";
 
 interface Challenge {
   type: string;
@@ -15,7 +15,6 @@ interface Challenge {
 
 interface ChallengesContextData {
   user: GithubUserData;
-  setUser: (user: GithubUserData) => void;
   githubUsername: string;
   level: number;
   currentExperience: number;
@@ -45,7 +44,7 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
   const [user, setUser] = useState(userLocalStorage ?? null);
-  const [githubUsername, setGithubUsername] = useState(
+  const [githubUsername, setGithubUsernamePrivate] = useState(
     rest.githubUsername ?? ""
   );
   const [level, setLevel] = useState(rest.level ?? 1);
@@ -127,11 +126,19 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     setChallengesCompleted(challengesCompleted + 1);
   };
 
+  const setGithubUsername = async (name: string) => {
+    setGithubUsernamePrivate(name);
+    const githubApi = GithubApi;
+    const userPromise: Promise<GithubUserData> = githubApi.user(name);
+    const user: GithubUserData = await userPromise;
+    setGithubUsernamePrivate(user.username);
+    setUser(user);
+  };
+
   return (
     <ChallengesContext.Provider
       value={{
         user,
-        setUser,
         githubUsername,
         level,
         currentExperience,
