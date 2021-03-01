@@ -3,7 +3,7 @@
     border: 1px dashed var(--red);
   }
   50% {
-    border: 2px dotted var(--red);
+    border: 1px dotted var(--red);
   }
   100% {
     border: 1px dashed var(--red);
@@ -94,7 +94,22 @@
       background-color: var(--background2);
       color: var(--title);
       transition: background-color 1s, box-shadow 1s;
-      animation: buttonAnimation 1s infinite;
+      // animation: buttonAnimation 1s infinite;
+      border: none;
+      border-bottom: 4px solid var(--gray-line);
+      position: relative;
+      width: 100%;
+
+      .buttonIsActivePercBar {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        height: 4px;
+        background-color: var(--green);
+        box-shadow: 0 0 5px var(--green);
+        border-radius: 5px;
+        transition: width 0.5s ease;
+      }
 
       &:hover {
         background-color: var(--red);

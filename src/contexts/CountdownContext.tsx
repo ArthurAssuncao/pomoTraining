@@ -8,6 +8,7 @@ import {
 import { ChallengesContext } from "./ChallengesContext";
 
 interface CountdownContextData {
+  maxMinutes: number;
   minutes: number;
   seconds: number;
   hasFinished: boolean;
@@ -26,8 +27,8 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext);
 
   // ToDo fix this
-  const defaultMinutes = 25;
-  const defaultTime = defaultMinutes * 60;
+  const maxMinutes = 25;
+  const defaultTime = maxMinutes * 60;
   const [time, setTime] = useState(defaultTime);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
@@ -63,6 +64,7 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
   return (
     <CountdownContext.Provider
       value={{
+        maxMinutes,
         minutes,
         seconds,
         hasFinished,
