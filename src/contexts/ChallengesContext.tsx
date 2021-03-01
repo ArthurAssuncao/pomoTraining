@@ -5,6 +5,7 @@ import notificationIcon from "../assets/img/icons/level.svg";
 import notificationAudio from "../assets/sound/notification.mp3";
 import { LevelUpModal } from "../components/LevelUpModal";
 import { LoginModal } from "../components/LoginModal";
+import { GithubUserData } from "../services/GithubApi";
 
 interface Challenge {
   type: string;
@@ -13,6 +14,8 @@ interface Challenge {
 }
 
 interface ChallengesContextData {
+  user: GithubUserData;
+  setUser: (user: GithubUserData) => void;
   githubUsername: string;
   level: number;
   currentExperience: number;
@@ -38,6 +41,10 @@ interface ChallengesProviderProps {
 const ChallengesContext = createContext({} as ChallengesContextData);
 
 const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
+  const userLocalStorage: GithubUserData = process.browser
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
+  const [user, setUser] = useState(userLocalStorage ?? null);
   const [githubUsername, setGithubUsername] = useState(
     rest.githubUsername ?? ""
   );
@@ -58,11 +65,14 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
   }, []);
 
   useEffect(() => {
+    if (user && process.browser) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
     Cookies.set("githubUsername", String(githubUsername));
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
     Cookies.set("challengesCompleted", String(challengesCompleted));
-  }, [githubUsername, level, currentExperience, challengesCompleted]);
+  }, [user, githubUsername, level, currentExperience, challengesCompleted]);
 
   const experienceToNextLevel = (): number => {
     return Math.pow((level + 1) * 4, 2);
@@ -120,6 +130,8 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
   return (
     <ChallengesContext.Provider
       value={{
+        user,
+        setUser,
         githubUsername,
         level,
         currentExperience,
