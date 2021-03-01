@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CountdownContext } from "../../contexts";
 import styles from "./Countdown.module.scss";
 
 const CountDown = () => {
   const {
+    maxMinutes,
     minutes,
     seconds,
     isActive,
@@ -11,6 +12,31 @@ const CountDown = () => {
     startCountDown,
     resetCountDown,
   } = useContext(CountdownContext);
+
+  const [percentToFinish, setPercentToFinish] = useState(100);
+
+  const updatePercentToFinish = () => {
+    const percUnit = (maxMinutes * 60) / 100;
+    let newPercentToFinish =
+      100 - Math.floor((minutes * 60 + seconds) / percUnit);
+    if (newPercentToFinish > 100) {
+      newPercentToFinish = 100;
+    }
+    setPercentToFinish(newPercentToFinish);
+  };
+
+  const startCountDownAndResetBar = () => {
+    updatePercentToFinish();
+    startCountDown();
+  };
+
+  useEffect(() => {
+    if (isActive) {
+      setTimeout(() => {
+        updatePercentToFinish();
+      }, 1000 * 30);
+    }
+  }, [percentToFinish]);
 
   const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
   const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
@@ -43,12 +69,16 @@ const CountDown = () => {
               onClick={resetCountDown}
             >
               Abandonar Ciclo
+              <span
+                className={styles.buttonIsActivePercBar}
+                style={{ width: `${percentToFinish}%` }}
+              ></span>
             </button>
           ) : (
             <button
               type="button"
               className={styles.button}
-              onClick={startCountDown}
+              onClick={startCountDownAndResetBar}
             >
               Iniciar um ciclo
             </button>
