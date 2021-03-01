@@ -4,16 +4,16 @@ import { ChallengesContext } from "../../contexts";
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
-  const { level } = useContext(ChallengesContext);
+  const { level, githubUsername } = useContext(ChallengesContext);
   return (
     <div className={styles.container}>
       <img
         className={styles.photo}
-        src="https://github.com/arthurassuncao.png"
+        src={`https://github.com/${githubUsername}.png`}
         alt="Profile"
       />
       <div className={styles.nameContainer}>
-        <strong className={styles.name}>Arthur Assuncao</strong>
+        <strong className={styles.name}>{githubUsername}</strong>
         <p className={styles.nameIconWrapper}>
           <img className={styles.nameIcon} src={levelIcon} alt="Profile icon" />
           Level {level}
