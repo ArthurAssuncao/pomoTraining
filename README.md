@@ -15,10 +15,13 @@
  5. [Como rodar o código](#how-to-run)
 
 <div id='abstract'/>
+
 ## O que é PomoTraning
+
 > O projeto pomoTraining é uma aplicação que une Pomodoro e Exercícios físicos, nasceu com base no projeto MoveIt da NLW 4.0 da Rockeatseat. Porém, passou por diversas melhorias e alterações.
 
 <div id='improvements'/>
+
 ## Melhorias realizadas no projeto original
 - Alteração do nome e logo do projeto, ambos pensados e criados por mim ([@arthurassuncao](http://github.com/arthurAssuncao));
 - Adição de tema dark e light;
@@ -33,6 +36,7 @@
 - Uso de SASS em vez de CSS no CSS Modules;
 
 <div id='images'/>
+
 ## Imagens do projeto
 
 #### Tela mobile
@@ -61,6 +65,7 @@
 </p>
 
 <div id='stack'/>
+
 ## Tecnologias utilizadas
 O Front-end do site é feito utilizando:
 - **Nextjs** com o uso de renderização no lado servidor (SSR - Server Side Rendering);
@@ -70,6 +75,7 @@ O Front-end do site é feito utilizando:
 - **Temas light e dark**: os temas claro e escuro são criados com o uso de variáveis css, facilitando o uso e manutenção;
 
 <div id='how-to-run'/>
+
 ## Getting Started
 
 Para rodar localmente utilize o comando abaixo:
