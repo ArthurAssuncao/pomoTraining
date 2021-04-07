@@ -10,6 +10,20 @@
   }
 }
 
+:root body[data-theme="dark"] {
+  .container {
+    .active {
+      .content {
+        .contentImageWrapper {
+          .contentImage {
+            filter: invert(1);
+          }
+        }
+      }
+    }
+  }
+}
+
 .container {
   height: 100%;
   background-color: var(--background2);
@@ -26,6 +40,7 @@
 
   .active {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
@@ -42,23 +57,68 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
 
       .contentTitle {
         font-weight: 600;
         font-size: 2rem;
         color: var(--title);
-        margin: 1.5rem 0 1rem;
+        margin: 1rem 0 1rem;
+      }
+
+      .contentImageWrapper {
+        position: relative;
+        height: 100%;
+        height: clamp(150px, 100%, 190px);
+        display: flex;
+        align-self: center;
+
+        .contentImage {
+          height: 100%;
+          height: clamp(150px, 100%, 190px);
+          max-width: 100%;
+          object-fit: contain;
+          padding: 0 1rem 0.5rem 1rem;
+        }
+
+        .contentImageCopyright {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          font-size: 0.5rem;
+          letter-spacing: 0.1rem;
+          writing-mode: vertical-rl;
+        }
       }
 
       .contentDescription {
         line-height: 1.5;
+        text-align: left;
+        hyphens: auto;
+      }
+
+      .contentHowDo {
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        align-self: flex-start;
+        margin-top: 0.3rem;
+
+        .contentHowDoIcon {
+          height: 1.5rem;
+          padding: 0.15rem 0.5rem 0.15rem 0;
+        }
+
+        .contentHowDoMsg {
+          text-align: left;
+        }
       }
     }
 
     .footer {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
 
       .button {
@@ -81,6 +141,15 @@
 
       .buttonFailed {
         background-color: var(--red);
+      }
+
+      .buttonNext {
+        background-color: var(--text-highlight);
+        transition: background-color 0.5s ease;
+
+        &:hover {
+          background-color: var(--blue);
+        }
       }
 
       .buttonSucceeded {

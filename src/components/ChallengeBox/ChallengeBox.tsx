@@ -1,24 +1,39 @@
-import { useContext } from "react";
-import body from "../../assets/img/icons/body.svg";
-import eye from "../../assets/img/icons/eye.svg";
+import { useContext, useState } from "react";
+import bodyIcon from "../../assets/img/icons/body.svg";
 import levelUP from "../../assets/img/icons/level-up.svg";
 import { ChallengesContext, CountdownContext } from "../../contexts";
 import styles from "./ChallengeBox.module.scss";
 
 const ChallengeBox = () => {
-  const { activeChallenge, resetChallenge, completeChallenge } = useContext(
-    ChallengesContext
-  );
+  const {
+    activeChallenge,
+    resetChallenge,
+    completeChallenge,
+    nextChallenge,
+    numberChallengesPerCicle,
+  } = useContext(ChallengesContext);
   const { resetCountDown } = useContext(CountdownContext);
+  const [challegesCicle, setChallegesCicle] = useState(0);
+
+  const handleChallengeNext = () => {
+    nextChallenge();
+  };
 
   const handleChallengeSucceeded = () => {
     completeChallenge();
+    setChallegesCicle(challegesCicle + 1);
+    if (challegesCicle < numberChallengesPerCicle) {
+      nextChallenge();
+      return;
+    }
     resetCountDown();
+    setChallegesCicle(0);
   };
 
   const handleChallengeFailed = () => {
     resetChallenge();
     resetCountDown();
+    setChallegesCicle(0);
   };
 
   return (
@@ -30,11 +45,30 @@ const ChallengeBox = () => {
           </header>
 
           <article className={styles.content}>
-            {activeChallenge.type === "body" && <img src={body} alt="" />}
-            {activeChallenge.type === "eye" && <img src={eye} alt="" />}
             <strong className={styles.contentTitle}>Novo desafio</strong>
+            <div className={styles.contentImageWrapper}>
+              <img
+                src={activeChallenge.image.url}
+                alt={activeChallenge.description}
+                className={styles.contentImage}
+              />
+              <span className={styles.contentImageCopyright}>
+                Fonte: {activeChallenge.image.copyright}
+              </span>
+            </div>
+
             <p className={styles.contentDescription}>
               {activeChallenge.description}
+            </p>
+            <p className={styles.contentHowDo}>
+              <img
+                src={bodyIcon}
+                alt="Como fazer"
+                className={styles.contentHowDoIcon}
+              />
+              <span className={styles.contentHowDoMsg}>
+                {activeChallenge.howDo}
+              </span>
             </p>
           </article>
 
@@ -45,6 +79,13 @@ const ChallengeBox = () => {
               onClick={handleChallengeFailed}
             >
               Falhei
+            </button>
+            <button
+              type="button"
+              className={`${styles.button} ${styles.buttonNext}`}
+              onClick={handleChallengeNext}
+            >
+              Pular
             </button>
             <button
               type="button"

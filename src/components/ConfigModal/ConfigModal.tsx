@@ -10,9 +10,13 @@ interface ConfigModalProps {
 }
 
 const ConfigModal = (props: ConfigModalProps) => {
-  const { user, githubUsername, setGithubUsername } = useContext(
-    ChallengesContext
-  );
+  const {
+    user,
+    githubUsername,
+    setGithubUsername,
+    numberChallengesPerCicle,
+    setNumberChallenges,
+  } = useContext(ChallengesContext);
   const { maxMinutes, setMaxMinutes } = useContext(CountdownContext);
   const { show, handleClose } = props;
 
@@ -20,6 +24,14 @@ const ConfigModal = (props: ConfigModalProps) => {
     const value: string = newValue;
     if (typeof value === "string") {
       setGithubUsername(value);
+    }
+  };
+
+  const saveNewNumberChallengesPerCicle = (newValue) => {
+    const value: number = Number(newValue);
+
+    if (!isNaN(value) && typeof value === "number") {
+      setNumberChallenges(value);
     }
   };
 
@@ -48,15 +60,21 @@ const ConfigModal = (props: ConfigModalProps) => {
             <div className={styles.fields}>
               <ConfigModalField
                 icon={user.profilePhoto}
-                name="githubUsername"
+                name="Github User"
                 value={githubUsername}
                 handleClick={saveNewGithubUser}
               />
 
               <ConfigModalField
-                name="maxMinutes"
+                name="Minutos"
                 value={maxMinutes}
                 handleClick={saveNewMaxMinutes}
+              />
+
+              <ConfigModalField
+                name="Número de desafios por ciclo"
+                value={numberChallengesPerCicle}
+                handleClick={saveNewNumberChallengesPerCicle}
               />
             </div>
           </section>
