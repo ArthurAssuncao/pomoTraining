@@ -1,62 +1,162 @@
 [
   {
     "type": "body",
-    "description": "Estique um de seus braços com a palma da mão virada para frente e puxe os dedos para cima por 10 segundos por mão.",
-    "amount": 80
+    "description": "Fique na posição 4 apoios e estique um de seus braços com a palma da mão virada para baixo e estique a perna contrária.",
+    "howDo": "Repita 10 vezes e alterne braços e pernas.",
+    "amount": 80,
+    "image": {
+      "url": "/exercices/arm-leg-extension.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Estique seu braço contra o peito e puxe-o utilizando o outro braço por 10 segundos por braço.",
-    "amount": 60
+    "description": "Estique um braço e com a mão do outro braço puxe seus dedos.",
+    "howDo": "Mantenha por 30 segundos e alterne braços.",
+    "amount": 50,
+    "image": {
+      "url": "/exercices/arm-raise.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Puxe seu pescoço com a ajuda da mão para a direita e para a esquerda, permanecendo na posição por alguns segundos.",
-    "amount": 70
+    "description": "Estique os braços para cima, entrelace os dedos das mãos e incline seu corpo um pouco para cada lado. Se for difícil, use uma mão para segurar os dedos da outra e alterne.",
+    "howDo": "Mantenha por 30 segundos inclinando lentamente o corpo.",
+    "amount": 40,
+    "image": {
+      "url": "/exercices/arm-side-bend.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Com as duas mãos na parte de trás da cabeça, leve-a para baixo, alongando a parte de trás da região.",
-    "amount": 60
+    "description": "1) Estique os braços para cima, entrelace os dedos das mãos. 2) Coloque um braço atrás da cabeça e com a outra mão puxe o braço mais para trás. 3) incline o pescoço para o lado usando uma das mãos.",
+    "howDo": "Mantenha por 30 segundos em cada exercício e alterne o lado quando possível.",
+    "amount": 100,
+    "image": {
+      "url": "/exercices/arms-stretch.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Cruze as pernas e desça com as mãos esticadas em direção ao chão. Repita o movimento com a outra perna na frente.",
-    "amount": 100
+    "description": "Deite e levante apenas o tronco.",
+    "howDo": "Repita 10 vezes realizando o movimento lentamente.",
+    "amount": 60,
+    "image": {
+      "url": "/exercices/back-extension.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Sentado, abra as pernas e tente encostar as palmas das mãos no chão, repita 3 vezes por 5 segundos.",
-    "amount": 80
+    "description": "Faça a posição borboleta e tente levar o tronco para frente.",
+    "howDo": "Mantenha por 30 segundos e tente levar o corpo para frente umas 10 vezes.",
+    "amount": 70,
+    "image": {
+      "url": "/exercices/butterfly.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Puxe o joelho de encontro ao peito e segure, troque de perna após 10 segundos.",
-    "amount": 50
+    "description": "Faça a posição 4 apoios e jogue costas para tras (gato) e depois para frente (vaca).",
+    "howDo": "Repita 10 vezes.",
+    "amount": 70,
+    "image": {
+      "url": "/exercices/cat-cow.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Sentado, cruze uma perna e incline seu tronco à frente, troque de perna após 10 segundos.",
-    "amount": 80
-  },
-  {
-    "type": "eye",
-    "description": "Sentado, feche os olhos e cubra-os com as palmas da mão durante 2 minutos, depois abra normalmente.",
-    "amount": 90
-  },
-  {
-    "type": "eye",
-    "description": "Em algum ambiente aberto, olhe o mais longe que puder em quatro direções por 3s, mexa apenas os olhos. Repita 3 vezes.",
-    "amount": 140
-  },
-  {
-    "type": "eye",
-    "description": "Usando os polegares, massage a área abaixo das sobrancelhas em movimentos circulares por 15 segundos.",
-    "amount": 70
+    "description": "Abra e feche as mãos lentamente.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 30,
+    "image": {
+      "url": "/exercices/hand-open-close.png",
+      "copyright": "Darebee.com"
+    }
   },
   {
     "type": "body",
-    "description": "Em pé, gire a cintura o máximo que puder para a esquerda, segure por cinco segundos. Repita para a direita.",
-    "amount": 90
+    "description": "Mova as mãos para baixo e para cima lentamente movimentando os punhos.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 40,
+    "image": {
+      "url": "/exercices/hand-up-down.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Encolha o corpo e mova lentamente para os lados.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 40,
+    "image": {
+      "url": "/exercices/knee-hug-strech.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Deite com os joelhos flexionados e solte os joelhos para cada um dos lados. Use um dos braços para auxiliar.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 50,
+    "image": {
+      "url": "/exercices/knee-roll.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Em pé, deixe as pernas bastante afastadas e mova o braço até próximo do pé, cada vez de um lado.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 50,
+    "image": {
+      "url": "/exercices/legs-open-hand-left-right.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Em pé, deixe as pernas bastante afastadas e flexione um joelho indo em direção a um lado, cada vez flexione um joelho.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 50,
+    "image": {
+      "url": "/exercices/legs-open-left-right.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Deite de bruços e estique braços e pernas elevando o tronco levemente.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 70,
+    "image": {
+      "url": "/exercices/superman.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Na posição 4 apoios, encolha o corpo e depois levante o tronco usando os braços.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 80,
+    "image": {
+      "url": "/exercices/torso-stretch.png",
+      "copyright": "Darebee.com"
+    }
+  },
+  {
+    "type": "body",
+    "description": "Torça o tronco para um lado de cada vez.",
+    "howDo": "Repita 10 vezes.",
+    "amount": 50,
+    "image": {
+      "url": "/exercices/torso-stretch.png",
+      "copyright": "Darebee.com"
+    }
   }
 ]
