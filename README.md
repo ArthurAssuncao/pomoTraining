@@ -37,27 +37,27 @@
 
 #### Tela mobile
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" height="400px" alt="Tela mobile" />
 </p>
 
 #### Tela de Login em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-login.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-login.png" height="500px" alt="Tela de Login em Tablet" />
 </p>
 
 #### Tela Home em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home.png" height="500px" alt="Tela Home em Tablet" />
 </p>
 
 #### Tela Home em Tablet no tema Dark
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home-dark.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home-dark.png" height="500px" alt="Tela Home em Tablet no tema Dark" />
 </p>
 
 #### Tela de Configurações em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-config.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-config.png" height="500px" alt="Tela de Configurações em Tablet" />
 </p>
 
 <div id='stack'/>
