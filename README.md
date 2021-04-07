@@ -1,6 +1,8 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/src/assets/img/icons/pomoTraining-icon.svg" width="120px" />
-**<span style="font-size: 30px; color: #8a47f5">PomoTraining</span>**
+    <img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/src/assets/img/icons/pomoTraining-icon.svg" width="120px" />
+</p>    
+<p align="center">
+    <img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/src/assets/img/icons/logo-title.svg" />
 </p>
 
 ![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=pomoTraining)
