@@ -15,10 +15,13 @@
  5. [Como rodar o código](#how-to-run)
 
 <div id='abstract'/>
+
 ## O que é PomoTraning
+
 > O projeto pomoTraining é uma aplicação que une Pomodoro e Exercícios físicos, nasceu com base no projeto MoveIt da NLW 4.0 da Rockeatseat. Porém, passou por diversas melhorias e alterações.
 
 <div id='improvements'/>
+
 ## Melhorias realizadas no projeto original
 - Alteração do nome e logo do projeto, ambos pensados e criados por mim ([@arthurassuncao](http://github.com/arthurAssuncao));
 - Adição de tema dark e light;
@@ -33,34 +36,36 @@
 - Uso de SASS em vez de CSS no CSS Modules;
 
 <div id='images'/>
+
 ## Imagens do projeto
 
 #### Tela mobile
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" height="400px" alt="Tela mobile" />
 </p>
 
 #### Tela de Login em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-login.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-login.png" height="500px" alt="Tela de Login em Tablet" />
 </p>
 
 #### Tela Home em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home.png" height="500px" alt="Tela Home em Tablet" />
 </p>
 
 #### Tela Home em Tablet no tema Dark
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home-dark.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-home-dark.png" height="500px" alt="Tela Home em Tablet no tema Dark" />
 </p>
 
 #### Tela de Configurações em Tablet
 <p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-config.png" />
+<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/tablet-config.png" height="500px" alt="Tela de Configurações em Tablet" />
 </p>
 
 <div id='stack'/>
+
 ## Tecnologias utilizadas
 O Front-end do site é feito utilizando:
 - **Nextjs** com o uso de renderização no lado servidor (SSR - Server Side Rendering);
@@ -70,6 +75,7 @@ O Front-end do site é feito utilizando:
 - **Temas light e dark**: os temas claro e escuro são criados com o uso de variáveis css, facilitando o uso e manutenção;
 
 <div id='how-to-run'/>
+
 ## Getting Started
 
 Para rodar localmente utilize o comando abaixo:
