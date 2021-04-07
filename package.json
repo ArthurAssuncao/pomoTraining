@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "new:feature": "git checkout -b ",
+    "merge:feature": "git checkout develop && git merge --no-ff ",
+    "pr": "gh pr create --base main && git branch -D `git branch | grep -E '(feature)'`"
   },
   "dependencies": {
     "next": "10.0.7",

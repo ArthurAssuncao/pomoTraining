@@ -11,17 +11,25 @@ interface Challenge {
   type: string;
   description: string;
   amount: number;
+  howDo: string;
+  image: {
+    url: string;
+    copyright: string;
+  };
 }
 
 interface ChallengesContextData {
   user: GithubUserData;
   githubUsername: string;
+  numberChallengesPerCicle: number;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
   activeChallenge: Challenge;
+  setNumberChallenges: (newValue: number) => void;
   experienceToNextLevel: () => number;
   levelUp: () => void;
+  nextChallenge: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
   completeChallenge: () => void;
@@ -31,6 +39,7 @@ interface ChallengesContextData {
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  numberChallengesPerCicle: number;
   githubUsername: string;
   level: number;
   currentExperience: number;
@@ -44,6 +53,9 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
   const [user, setUser] = useState(userLocalStorage ?? null);
+  const [numberChallengesPerCicle, setNumberChallengesPerCicle] = useState(
+    rest.numberChallengesPerCicle ?? 1
+  );
   const [githubUsername, setGithubUsernamePrivate] = useState(
     rest.githubUsername ?? ""
   );
@@ -55,9 +67,11 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     rest.challengesCompleted ?? 0
   );
 
-  const [activeChallenge, setActiveChallenge] = useState(null);
+  const [activeChallenge, setActiveChallenge] = useState<Challenge>(null);
 
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+
+  const [challengesHasBeenSorted, setChallengesHasBeenSorted] = useState([]);
 
   useEffect(() => {
     Notification.requestPermission();
@@ -68,10 +82,18 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
       localStorage.setItem("user", JSON.stringify(user));
     }
     Cookies.set("githubUsername", String(githubUsername));
+    Cookies.set("numberChallengesPerCicle", String(numberChallengesPerCicle));
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
     Cookies.set("challengesCompleted", String(challengesCompleted));
-  }, [user, githubUsername, level, currentExperience, challengesCompleted]);
+  }, [
+    user,
+    githubUsername,
+    numberChallengesPerCicle,
+    level,
+    currentExperience,
+    challengesCompleted,
+  ]);
 
   const experienceToNextLevel = (): number => {
     return Math.pow((level + 1) * 4, 2);
@@ -86,8 +108,29 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     setIsLevelUpModalOpen(false);
   };
 
-  const startNewChallenge = () => {
+  const setNumberChallenges = (newValue: number) => {
+    if (newValue > 0) {
+      setNumberChallengesPerCicle(newValue);
+    }
+  };
+
+  const sortChallenge = () => {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
+    if (challengesHasBeenSorted.includes(randomChallengeIndex)) {
+      return sortChallenge();
+    }
+    return randomChallengeIndex;
+  };
+
+  const nextChallenge = () => {
+    const randomChallengeIndex = sortChallenge();
+    const challenge = challenges[randomChallengeIndex];
+
+    setActiveChallenge(challenge);
+  };
+
+  const startNewChallenge = () => {
+    const randomChallengeIndex = sortChallenge();
     const challenge = challenges[randomChallengeIndex];
 
     setActiveChallenge(challenge);
@@ -113,6 +156,16 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
       return;
     }
     const { amount } = activeChallenge;
+
+    const activeChallengeIndex = challenges.indexOf(activeChallenge);
+
+    const newChallengesHasBeenSorted = challengesHasBeenSorted.slice();
+    newChallengesHasBeenSorted.push(activeChallengeIndex);
+
+    if (newChallengesHasBeenSorted.length == challenges.length) {
+      newChallengesHasBeenSorted.splice(0, challengesHasBeenSorted.length);
+    }
+    setChallengesHasBeenSorted(newChallengesHasBeenSorted);
 
     let newExperience = currentExperience + amount;
 
@@ -140,12 +193,15 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
       value={{
         user,
         githubUsername,
+        numberChallengesPerCicle,
         level,
         currentExperience,
         challengesCompleted,
         experienceToNextLevel,
         activeChallenge,
         levelUp,
+        setNumberChallenges,
+        nextChallenge,
         startNewChallenge,
         resetChallenge,
         completeChallenge,

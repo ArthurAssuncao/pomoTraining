@@ -41,7 +41,7 @@ const ConfigModalField = (props: ConfigModalFieldProps) => {
       <input
         type="text"
         className={styles.valueNew}
-        placeholder={`Current is ${value}`}
+        placeholder={`Atual é ${value}`}
         onChange={updateValue}
       ></input>
 
