@@ -74,7 +74,9 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
   const [challengesHasBeenSorted, setChallengesHasBeenSorted] = useState([]);
 
   useEffect(() => {
-    Notification.requestPermission();
+    if ("Notification" in window) {
+      Notification.requestPermission();
+    }
   }, []);
 
   useEffect(() => {
@@ -129,6 +131,19 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
     setActiveChallenge(challenge);
   };
 
+  const showNotification = (challenge) => {
+    if ("Notification" in window) {
+      if (Notification.permission === "granted") {
+        new Notification("Novo desafio", {
+          body: `Valendo ${challenge.amount} xp!!`,
+          icon: notificationIcon,
+        });
+      } else {
+        Notification.requestPermission();
+      }
+    }
+  };
+
   const startNewChallenge = () => {
     const randomChallengeIndex = sortChallenge();
     const challenge = challenges[randomChallengeIndex];
@@ -137,14 +152,7 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
 
     new Audio(notificationAudio).play();
 
-    if (Notification.permission === "granted") {
-      new Notification("Novo desafio", {
-        body: `Valendo ${challenge.amount} xp!!`,
-        icon: notificationIcon,
-      });
-    } else {
-      Notification.requestPermission();
-    }
+    showNotification(challenge);
   };
 
   const resetChallenge = () => {
