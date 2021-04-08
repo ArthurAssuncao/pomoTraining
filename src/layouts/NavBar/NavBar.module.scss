@@ -5,7 +5,7 @@ body[data-theme="dark"] {
 }
 
 .container {
-  padding: 1rem 0;
+  // padding: 1rem 0;
   position: fixed;
 
   display: flex;
@@ -13,6 +13,7 @@ body[data-theme="dark"] {
   align-items: center;
   box-shadow: 0 10px 60px var(--container-shadow);
 
+  left: 0;
   bottom: 0;
   height: 60px;
   width: 100vw;

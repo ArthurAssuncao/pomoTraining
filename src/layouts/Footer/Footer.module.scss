@@ -5,7 +5,7 @@ body[data-theme="dark"] {
 }
 
 .container {
-  height: 200px;
+  height: 265px;
   background-color: var(--background2);
   border-radius: 5px;
   box-shadow: 0 0 60px var(--container-shadow);
@@ -16,6 +16,12 @@ body[data-theme="dark"] {
   justify-content: space-between;
   color: var(--text);
   margin-top: 1rem;
+  padding-bottom: 65px;
+
+  @media (min-width: 992px) {
+    height: 200px;
+    padding: 1.5rem 2rem;
+  }
 
   .title {
     font-family: "Inter", sans-serif;
