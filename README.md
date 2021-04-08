@@ -45,16 +45,14 @@
 
 <table align="center">
 	<tr>
-    	<td>Tela de Login</td>
-        <td>Tela Home</td>
-        <td>Tela Home no tema Dark</td>
+    	<td align="center"><strong>Tela de Login</strong></td>
+        <td align="center"><strong>Tela Home</strong></td>
+        <td align="center"><strong>Tela Home no tema Dark</strong></td>
     </tr>
     <tr>
-        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" alt="Tela mobile" width="30%" /></td>
-
-        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home.png"  alt="Tela mobile home" width="30%" /></td>
-
-        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home-dark.png" alt="Tela mobile home dark" width="30%" /></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" alt="Tela mobile" width="75%" /></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home.png"  alt="Tela mobile home" width="75%" /></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home-dark.png" alt="Tela mobile home dark" width="75%" /></td>
     </tr>
 </table>
 
