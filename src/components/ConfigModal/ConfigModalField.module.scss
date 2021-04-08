@@ -7,6 +7,10 @@
   align-items: stretch;
   justify-content: center;
 
+  @media (min-width: 992px) {
+    justify-content: flex-start;
+  }
+
   margin-bottom: 2rem;
   padding: 1rem;
 
@@ -24,7 +28,10 @@
     min-width: initial;
   }
 
-  --height: 4rem;
+  --height: 3rem;
+  @media (min-width: 992px) {
+    --height: 4rem;
+  }
   --border-size: 2px;
   --height-without-border: calc(var(--height) - calc(var(--border-size) * 2));
 

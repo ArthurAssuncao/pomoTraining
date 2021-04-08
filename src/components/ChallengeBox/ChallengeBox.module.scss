@@ -69,16 +69,24 @@
       .contentImageWrapper {
         position: relative;
         height: 100%;
-        height: clamp(150px, 100%, 190px);
+        height: clamp(150px, 100%, 150px);
         display: flex;
         align-self: center;
 
+        @media (min-width: 992px) {
+          height: clamp(150px, 100%, 190px);
+        }
+
         .contentImage {
           height: 100%;
-          height: clamp(150px, 100%, 190px);
+          height: clamp(50px, 100%, 150px);
           max-width: 100%;
           object-fit: contain;
           padding: 0 1rem 0.5rem 1rem;
+
+          @media (min-width: 992px) {
+            height: clamp(150px, 100%, 190px);
+          }
         }
 
         .contentImageCopyright {
