@@ -40,9 +40,22 @@
 ## Imagens do projeto
 
 #### Tela mobile
-<p align="center">
-<img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" height="400px" alt="Tela mobile" />
-</p>
+
+<table align="center">
+	<tr>
+    	<td>Tela de Login</td>
+        <td>Tela Home</td>
+        <td>Tela Home no tema Dark</td>
+    </tr>
+    <tr>
+        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile.png" alt="Tela mobile" width="30%" /></td>
+
+        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home.png"  alt="Tela mobile home" width="30%" /></td>
+
+        <td><img src="https://raw.githubusercontent.com/ArthurAssuncao/pomoTraining/main/docs/screenshots/mobile-home-dark.png" alt="Tela mobile home dark" width="30%" /></td>
+    </tr>
+</table>
+
 
 #### Tela de Login em Tablet
 <p align="center">
