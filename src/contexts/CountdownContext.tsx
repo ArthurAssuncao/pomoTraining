@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import * as workerTimers from "worker-timers";
 import { ChallengesContext } from "./ChallengesContext";
 interface CountdownContextData {
   maxMinutes: number;
@@ -75,20 +76,28 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
     };
   };
 
-  let countDownTimeout: NodeJS.Timeout;
+  let countDownTimeout: number;
 
   useEffect(() => {
-    if (isActive && time > 0) {
-      countDownTimeout = setTimeout(() => {
+    const times = timeSinceInitTime();
+    console.log(times);
+    if (isActive && time > 0 && times.minutes >= 0) {
+      countDownTimeout = workerTimers.setTimeout(() => {
         setTime(time - 1);
-        const times = timeSinceInitTime();
+
         setMinutes(times.minutes);
         setSeconds(times.seconds);
       }, 1000);
-    } else if (isActive && time === 0) {
+    } else if (
+      isActive &&
+      (time === 0 ||
+        (times.minutes === 0 && times.seconds <= 0) ||
+        times.minutes < 0)
+    ) {
       setHasFinished(true);
       setIsActive(false);
       startNewChallenge();
+      setSeconds(0); // it's probably that finish after 0. "Gambiarra" is better than add seconds in useEffect
     }
   }, [isActive, time]);
 
@@ -108,12 +117,14 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
 
   const resetCountDown = () => {
     if (countDownTimeout) {
-      clearTimeout(countDownTimeout);
+      workerTimers.clearTimeout(countDownTimeout);
     }
     setIsActive(false);
     setHasFinished(false);
     setTime(defaultTime());
     setInitTime(null);
+    setMinutes(maxMinutes);
+    setSeconds(0);
   };
 
   const setMaxMinutes = (newMinutes: number) => {
