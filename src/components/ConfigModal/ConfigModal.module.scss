@@ -60,6 +60,9 @@ body[data-theme="dark"] {
       top: 2rem;
       position: absolute;
       cursor: pointer;
+      svg {
+        width: 3.2rem;
+      }
       &:hover {
         box-shadow: 0 0 10px var(--gray-line);
       }

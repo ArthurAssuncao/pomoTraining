@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import closeIcon from "../../assets/img/icons/close.svg";
+import CloseIcon from "../../assets/img/icons/close.svg";
 import { ChallengesContext, CountdownContext } from "../../contexts";
 import styles from "./ConfigModal.module.scss";
 import { ConfigModalField } from "./ConfigModalField";
@@ -49,7 +49,9 @@ const ConfigModal = (props: ConfigModalProps) => {
         <div className={styles.overlay}>
           <section className={styles.container}>
             <div className={styles.closeButton}>
-              <img src={closeIcon} alt="close icon" onClick={handleClose} />
+              <div onClick={handleClose}>
+                <CloseIcon />
+              </div>
             </div>
             <header className={styles.header}>Configurações</header>
 

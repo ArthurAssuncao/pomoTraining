@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import closeIcon from "../../assets/img/icons/close.svg";
+import CloseIcon from "../../assets/img/icons/close.svg";
 import { ChallengesContext } from "../../contexts";
 import styles from "./LevelUpModal.module.scss";
 
@@ -19,7 +19,9 @@ const LevelUpModal = () => {
           type="button"
           onClick={closeLevelUpModal}
         >
-          <img className={styles.buttonIcon} src={closeIcon} alt="Fechar" />
+          <div className={styles.buttonIcon}>
+            <CloseIcon />
+          </div>
         </button>
       </section>
     </div>

@@ -1,7 +1,12 @@
 import { useContext, useState } from "react";
-import bodyIcon from "../../assets/img/icons/body.svg";
-import levelUP from "../../assets/img/icons/level-up.svg";
-import { ChallengesContext, CountdownContext } from "../../contexts";
+import BodyIcon from "../../assets/img/icons/body.svg";
+import LevelUP from "../../assets/img/icons/level-up.svg";
+import {
+  ChallengesContext,
+  CountdownContext,
+  Log,
+  LoggerContext,
+} from "../../contexts";
 import styles from "./ChallengeBox.module.scss";
 
 const ChallengeBox = () => {
@@ -13,27 +18,49 @@ const ChallengeBox = () => {
     numberChallengesPerCicle,
   } = useContext(ChallengesContext);
   const { resetCountDown } = useContext(CountdownContext);
-  const [challegesCicle, setChallegesCicle] = useState(0);
+  const { addLog } = useContext(LoggerContext);
+
+  const [challengesCicle, setChallengesCicle] = useState(0);
 
   const handleChallengeNext = () => {
     nextChallenge();
+    const newLog = {
+      date: new Date(),
+      msg: "Novo desafio",
+      type: "info",
+    } as Log;
+    addLog(newLog);
   };
 
   const handleChallengeSucceeded = () => {
     completeChallenge();
-    setChallegesCicle(challegesCicle + 1);
-    if (challegesCicle < numberChallengesPerCicle) {
+    setChallengesCicle(challengesCicle + 1);
+    if (challengesCicle < numberChallengesPerCicle) {
       nextChallenge();
       return;
     }
     resetCountDown();
-    setChallegesCicle(0);
+    setChallengesCicle(0);
+
+    const newLog = {
+      date: new Date(),
+      msg: "Desafio concluído",
+      type: "success",
+    } as Log;
+    addLog(newLog);
   };
 
   const handleChallengeFailed = () => {
     resetChallenge();
     resetCountDown();
-    setChallegesCicle(0);
+    setChallengesCicle(0);
+
+    const newLog = {
+      date: new Date(),
+      msg: "Desafio não realizado",
+      type: "error",
+    } as Log;
+    addLog(newLog);
   };
 
   return (
@@ -61,11 +88,9 @@ const ChallengeBox = () => {
               {activeChallenge.description}
             </p>
             <p className={styles.contentHowDo}>
-              <img
-                src={bodyIcon}
-                alt="Como fazer"
-                className={styles.contentHowDoIcon}
-              />
+              <div className={styles.contentHowDoIcon}>
+                <BodyIcon />
+              </div>
               <span className={styles.contentHowDoMsg}>
                 {activeChallenge.howDo}
               </span>
@@ -103,11 +128,9 @@ const ChallengeBox = () => {
               Finalize um ciclo para receber desafios a serem completados
             </strong>
             <p className={styles.contentDescription}>
-              <img
-                src={levelUP}
-                alt="Level Up"
-                className={`${styles.contentIcon} ${styles.iconAnimation}`}
-              />
+              <div className={`${styles.contentIcon} ${styles.iconAnimation}`}>
+                <LevelUP />
+              </div>
               Avance de level completando desafios
             </p>
           </article>

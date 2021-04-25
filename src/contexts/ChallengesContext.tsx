@@ -1,8 +1,7 @@
 import Cookies from "js-cookie";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import challenges from "../assets/data/challenges.json";
-import notificationIcon from "../assets/img/icons/level.svg";
-import notificationAudio from "../assets/sound/notification.mp3";
+import NotificationIcon from "../assets/img/icons/level.svg";
 import { LevelUpModal } from "../components/LevelUpModal";
 import { LoginModal } from "../components/LoginModal";
 import { GithubApi, GithubUserData } from "../services/GithubApi";
@@ -136,7 +135,7 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
       if (Notification.permission === "granted") {
         new Notification("Novo desafio", {
           body: `Valendo ${challenge.amount} xp!!`,
-          icon: notificationIcon,
+          icon: NotificationIcon,
         });
       } else {
         Notification.requestPermission();
@@ -150,7 +149,7 @@ const ChallengesProvider = ({ children, ...rest }: ChallengesProviderProps) => {
 
     setActiveChallenge(challenge);
 
-    new Audio(notificationAudio).play();
+    new Audio("/sound/notification.mp3").play();
 
     showNotification(challenge);
   };

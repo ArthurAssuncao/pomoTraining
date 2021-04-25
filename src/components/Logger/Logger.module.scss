@@ -1,0 +1,27 @@
+.container {
+  max-height: 20rem;
+  min-height: 20rem;
+  height: 20rem;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--background2);
+
+  background-color: var(--background2);
+  box-shadow: 0 0 60px var(--container-shadow);
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  margin: 1rem 0;
+
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--background2);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--blue);
+    border-radius: 6px;
+    border: 3px solid var(--background2);
+  }
+}

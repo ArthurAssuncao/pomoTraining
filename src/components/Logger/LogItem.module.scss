@@ -1,0 +1,49 @@
+.container {
+  height: 3rem;
+  transition: all 0.5s ease;
+  display: grid;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--background);
+  }
+
+  .msgWrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.2fr 0.8fr 1fr 1.5fr 2fr;
+
+    > * {
+      margin-right: 0.5rem;
+    }
+
+    .dateIcon {
+      flex-direction: row;
+      align-items: center;
+
+      svg {
+        width: 1.2rem;
+        vertical-align: bottom;
+
+        path {
+          fill: var(--iconColor);
+        }
+      }
+    }
+
+    .date {
+      text-align: left;
+    }
+
+    .line {
+      color: var(--blue);
+      height: 3px;
+      background-color: var(--blue);
+    }
+
+    .msg {
+      text-align: center;
+    }
+  }
+}

@@ -8,8 +8,13 @@ import { CompleteChallenges } from "../../components/CompleteChallenges";
 import { ConfigModal } from "../../components/ConfigModal";
 import { CountDown } from "../../components/Countdown";
 import { ExperienceBar } from "../../components/ExperienceBar";
+import { Logger } from "../../components/Logger";
 import { Profile } from "../../components/Profile";
-import { CountdownProvider, ThemeToggler } from "../../contexts";
+import {
+  CountdownProvider,
+  LoggerProvider,
+  ThemeToggler,
+} from "../../contexts";
 import { ChallengeBoxLayout } from "../../layouts/ChallengeBoxLayout";
 import { ProfileCountDownLayout } from "../../layouts/ProfileCountDownLayout";
 import { Footer } from "../Footer";
@@ -51,18 +56,25 @@ const HomeLayout = () => {
         handleClickConfig={configMenuClick}
       />
       <CountdownProvider>
-        <main className={styles.main}>
-          <ConfigModal show={showConfigModal} handleClose={closeConfigModal} />
-          <ProfileCountDownLayout>
-            <Profile />
-            <CompleteChallenges />
-            <CountDown />
-          </ProfileCountDownLayout>
-          <ChallengeBoxLayout>
-            <ChallengeBox />
-          </ChallengeBoxLayout>
-        </main>
+        <LoggerProvider maxLogs={100}>
+          <main className={styles.main}>
+            <ConfigModal
+              show={showConfigModal}
+              handleClose={closeConfigModal}
+            />
+            <ProfileCountDownLayout>
+              <Profile />
+              <CompleteChallenges />
+              <CountDown />
+            </ProfileCountDownLayout>
+            <ChallengeBoxLayout>
+              <ChallengeBox />
+            </ChallengeBoxLayout>
+          </main>
+          <Logger />
+        </LoggerProvider>
       </CountdownProvider>
+
       <Footer />
       <ToastContainer />
     </div>

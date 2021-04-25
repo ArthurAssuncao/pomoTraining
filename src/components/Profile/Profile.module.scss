@@ -15,8 +15,8 @@
   .nameContainer {
     margin-left: 1.5rem;
 
-    name {
-      font-size: 1.5rem;
+    .name {
+      font-size: 1rem;
       font-weight: 600;
       color: var(--title);
     }
@@ -24,9 +24,16 @@
     .nameIconWrapper {
       font-size: 1rem;
       margin-top: 0.5rem;
+      display: flex;
 
       .nameIcon {
         margin-right: 0.5rem;
+        height: 1rem;
+        width: 1rem;
+        display: flex;
+        svg {
+          max-height: 1rem;
+        }
       }
     }
   }
