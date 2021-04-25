@@ -16,10 +16,17 @@ interface CountdownContextData {
   startCountDown: () => void;
   resetCountDown: () => void;
   setMaxMinutes: (value: number) => void;
+  timeSinceInitTime: () => TimeCountdown;
 }
 
 interface CountdownProviderProps {
   children: ReactNode;
+}
+
+interface TimeCountdown {
+  time: number;
+  minutes: number;
+  seconds: number;
 }
 
 const CountdownContext = createContext({} as CountdownContextData);
@@ -32,25 +39,51 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
       ? Number(Cookies.get("maxMinutes"))
       : 25
   );
+
   const calcTime = (newTime: number) => {
     return newTime * 60;
   };
+
   const defaultTime = () => {
     return calcTime(maxMinutes);
   };
+
   const [time, setTime] = useState(defaultTime());
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
+  const [initTime, setInitTime] = useState(null);
+  const [minutes, setMinutes] = useState(maxMinutes);
+  const [seconds, setSeconds] = useState(0);
+
+  const timeSinceInitTime = () => {
+    if (initTime == null) {
+      return {
+        time: maxMinutes,
+        minutes: maxMinutes,
+        seconds: 0,
+      };
+    }
+    const now = performance ? performance.now() : Date.now();
+    const distance = now - initTime;
+    const minutes =
+      maxMinutes - 1 - Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = 60 - 1 - Math.floor((distance % (1000 * 60)) / 1000);
+    return {
+      time: distance,
+      minutes: minutes,
+      seconds: seconds,
+    };
+  };
 
   let countDownTimeout: NodeJS.Timeout;
-
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
 
   useEffect(() => {
     if (isActive && time > 0) {
       countDownTimeout = setTimeout(() => {
         setTime(time - 1);
+        const times = timeSinceInitTime();
+        setMinutes(times.minutes);
+        setSeconds(times.seconds);
       }, 1000);
     } else if (isActive && time === 0) {
       setHasFinished(true);
@@ -61,10 +94,16 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
 
   useEffect(() => {
     Cookies.set("maxMinutes", String(maxMinutes));
+    if (!isActive) {
+      setMinutes(maxMinutes);
+      setSeconds(0);
+    }
   }, [maxMinutes]);
 
   const startCountDown = () => {
     setIsActive(true);
+    setInitTime(performance ? performance.now() : Date.now());
+    // console.log("Countdown starts");
   };
 
   const resetCountDown = () => {
@@ -74,6 +113,7 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
     setIsActive(false);
     setHasFinished(false);
     setTime(defaultTime());
+    setInitTime(null);
   };
 
   const setMaxMinutes = (newMinutes: number) => {
@@ -87,6 +127,7 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
   return (
     <CountdownContext.Provider
       value={{
+        timeSinceInitTime,
         maxMinutes,
         minutes,
         seconds,
