@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import levelIcon from "../../assets/img/icons/level.svg";
+import LevelIcon from "../../assets/img/icons/level.svg";
 import { ChallengesContext } from "../../contexts";
 import styles from "./Profile.module.scss";
 
@@ -16,8 +16,10 @@ const Profile = () => {
       <div className={styles.nameContainer}>
         <strong className={styles.name}>{user?.name ?? githubUsername}</strong>
         <p className={styles.nameIconWrapper}>
-          <img className={styles.nameIcon} src={levelIcon} alt="Profile icon" />
-          Level {level}
+          <div className={styles.nameIcon}>
+            <LevelIcon />
+          </div>
+          <div>Level {level}</div>
         </p>
       </div>
     </div>

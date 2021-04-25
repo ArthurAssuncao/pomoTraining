@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import TextTransition, { presets } from "react-text-transition";
 import ArrowRightIcon from "../../assets/img/icons/arrow-right.svg";
-import githubIcon from "../../assets/img/icons/github-fill.svg";
-import logoIcon from "../../assets/img/icons/pomoTraining-icon-invert.svg";
+import GithubIcon from "../../assets/img/icons/github-fill.svg";
+import LogoIcon from "../../assets/img/icons/pomoTraining-icon-invert.svg";
 import { ChallengesContext } from "../../contexts";
 import styles from "./LoginModal.module.scss";
 
@@ -46,7 +46,9 @@ const LoginModal = () => {
         </section>
         <section className={styles.containerData}>
           <div className={styles.appInfo}>
-            <img src={logoIcon} alt="logo" className={styles.appIcon} />
+            <div className={styles.appIcon}>
+              <LogoIcon />
+            </div>
             <span className={styles.appName}>PomoTraining</span>
           </div>
           <div className={styles.loginContainer}>
@@ -54,11 +56,9 @@ const LoginModal = () => {
 
             <div className={styles.loginGithubContainer}>
               <div className={styles.loginGithubDataContainer}>
-                <img
-                  src={githubIcon}
-                  alt="logo"
-                  className={styles.loginGithubIcon}
-                />
+                <div className={styles.loginGithubIcon}>
+                  <GithubIcon />
+                </div>
                 <span className={styles.loginGithubMsg}>
                   Entre com seu nome de usuário do Github para começar
                 </span>
@@ -77,11 +77,9 @@ const LoginModal = () => {
                     className={styles.loginButton}
                     onClick={changeGithubUsername}
                   >
-                    <img
-                      className={styles.loginButtonIcon}
-                      src={ArrowRightIcon}
-                      alt="Button icon"
-                    />
+                    <div className={styles.loginButtonIcon}>
+                      <ArrowRightIcon />
+                    </div>
                   </button>
                 </fieldset>
               </form>

@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import * as workerTimers from "worker-timers";
 import { ChallengesContext } from "./ChallengesContext";
 interface CountdownContextData {
   maxMinutes: number;
@@ -75,20 +76,30 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
     };
   };
 
-  let countDownTimeout: NodeJS.Timeout;
+  let countDownTimeout: number;
 
   useEffect(() => {
-    if (isActive && time > 0) {
-      countDownTimeout = setTimeout(() => {
-        setTime(time - 1);
-        const times = timeSinceInitTime();
-        setMinutes(times.minutes);
-        setSeconds(times.seconds);
+    const times = timeSinceInitTime();
+
+    if (isActive && time > 0 && times.minutes >= 0) {
+      countDownTimeout = workerTimers.setTimeout(() => {
+        if (isActive) {
+          setTime(time - 1);
+
+          setMinutes(times.minutes);
+          setSeconds(times.seconds);
+        }
       }, 1000);
-    } else if (isActive && time === 0) {
+    } else if (
+      isActive &&
+      (time === 0 ||
+        (times.minutes === 0 && times.seconds <= 0) ||
+        times.minutes < 0)
+    ) {
       setHasFinished(true);
       setIsActive(false);
       startNewChallenge();
+      setSeconds(0); // it's probably that finish after 0. "Gambiarra" is better than add seconds in useEffect
     }
   }, [isActive, time]);
 
@@ -103,17 +114,18 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const startCountDown = () => {
     setIsActive(true);
     setInitTime(performance ? performance.now() : Date.now());
-    // console.log("Countdown starts");
   };
 
   const resetCountDown = () => {
-    if (countDownTimeout) {
-      clearTimeout(countDownTimeout);
-    }
     setIsActive(false);
     setHasFinished(false);
     setTime(defaultTime());
     setInitTime(null);
+    setMinutes(maxMinutes);
+    setSeconds(0);
+    if (countDownTimeout) {
+      workerTimers.clearTimeout(countDownTimeout);
+    }
   };
 
   const setMaxMinutes = (newMinutes: number) => {

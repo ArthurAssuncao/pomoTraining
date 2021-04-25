@@ -1,6 +1,6 @@
-import homeIcon from "../../assets/img/icons/home-outlined.svg";
-import logoIcon from "../../assets/img/icons/pomoTraining-icon.svg";
-import settingsIcon from "../../assets/img/icons/settings-solid.svg";
+import HomeIcon from "../../assets/img/icons/home-outlined.svg";
+import LogoIcon from "../../assets/img/icons/pomoTraining-icon.svg";
+import SettingsIcon from "../../assets/img/icons/settings-solid.svg";
 import styles from "./NavBar.module.scss";
 
 interface NavBarProps {
@@ -14,24 +14,20 @@ const NavBar = (props: NavBarProps) => {
   return (
     <nav className={styles.container}>
       <div className={styles.appIconContainer}>
-        <img src={logoIcon} alt="Logo" />
+        <div>
+          <LogoIcon />
+        </div>
       </div>
       <div className={styles.iconsContainer}>
         <div className={styles.menuIconWrapper}>
-          <img
-            className={styles.menuIcon}
-            src={homeIcon}
-            alt="home icon"
-            onClick={handleClickHome}
-          />
+          <div className={styles.menuIcon} onClick={handleClickHome}>
+            <HomeIcon />
+          </div>
         </div>
         <div className={styles.menuIconWrapper}>
-          <img
-            className={styles.menuIcon}
-            src={settingsIcon}
-            alt="settings icon"
-            onClick={handleClickConfig}
-          />
+          <div className={styles.menuIcon} onClick={handleClickConfig}>
+            <SettingsIcon />
+          </div>
         </div>
       </div>
     </nav>
