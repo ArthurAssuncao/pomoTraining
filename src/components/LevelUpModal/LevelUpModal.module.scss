@@ -61,6 +61,10 @@
       font-size: 0;
       .buttonIcon {
         transition: box-shadow 0.5s ease;
+
+        svg {
+          width: 3.2rem;
+        }
       }
       &:hover .buttonIcon {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

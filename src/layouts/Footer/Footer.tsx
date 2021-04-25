@@ -1,6 +1,6 @@
-import githubIcon from "../../assets/img/icons/github-square.svg";
-import lattesIcon from "../../assets/img/icons/lattes-square.svg";
-import linkedinIcon from "../../assets/img/icons/linkedin-square.svg";
+import GithubIcon from "../../assets/img/icons/github-square.svg";
+import LattesIcon from "../../assets/img/icons/lattes-square.svg";
+import LinkedinIcon from "../../assets/img/icons/linkedin-square.svg";
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
@@ -11,25 +11,19 @@ const Footer = () => {
       </p>
       <div className={styles.socialContainer}>
         <a href="https://github.com/arthurassuncao">
-          <img
-            className={styles.socialIcon}
-            src={githubIcon}
-            alt="Link para Github de Arthur Assuncao"
-          />
+          <div className={styles.socialIcon}>
+            <GithubIcon />
+          </div>
         </a>
         <a href="https://www.linkedin.com/in/arthurassuncao">
-          <img
-            className={`${styles.socialIcon} ${styles.socialIconLinkedin}`}
-            src={linkedinIcon}
-            alt="Link para Linked de Arthur Assuncao"
-          />
+          <div className={`${styles.socialIcon} ${styles.socialIconLinkedin}`}>
+            <LinkedinIcon />
+          </div>
         </a>
         <a href="http://lattes.cnpq.br/8136835668168874">
-          <img
-            className={styles.socialIcon}
-            src={lattesIcon}
-            alt="Link para Lattes de Arthur Assuncao"
-          />
+          <div className={styles.socialIcon}>
+            <LattesIcon />
+          </div>
         </a>
       </div>
       <p className={styles.copyright}>

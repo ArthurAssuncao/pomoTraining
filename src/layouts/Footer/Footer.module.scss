@@ -35,11 +35,17 @@ body[data-theme="dark"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 1rem;
 
     .socialIcon {
       width: 48px;
       height: 48px;
+      max-height: 48px;
       margin: 1rem 1rem;
+
+      svg {
+        max-height: 48px;
+      }
 
       &:hover {
         filter: invert(0) sepia(1) saturate(71) hue-rotate(263deg);
@@ -48,10 +54,11 @@ body[data-theme="dark"] {
       @media (min-width: 992px) {
         width: 48px;
         height: 48px;
+        max-height: 48px;
         margin: 0 0.5rem;
       }
       &.socialIconLinkedin {
-        padding: 1px 0;
+        padding: 1px 1px;
       }
     }
   }

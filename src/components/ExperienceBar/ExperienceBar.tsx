@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import level from "../../assets/img/icons/level.svg";
+import Level from "../../assets/img/icons/level.svg";
 import { ChallengesContext } from "../../contexts";
 import { Tooltip } from "../Tooltip";
 import styles from "./ExperienceBar.module.scss";
@@ -9,7 +9,7 @@ const ExperienceBar = () => {
     ChallengesContext
   );
 
-  const percenteToNextLevel =
+  const percentToNextLevel =
     currentExperience > 0
       ? Math.round(currentExperience * 100) / experienceToNextLevel()
       : 0;
@@ -20,14 +20,16 @@ const ExperienceBar = () => {
       <div className={styles.bar}>
         <div
           className={styles.barFill}
-          style={{ width: `${percenteToNextLevel}%` }}
+          style={{ width: `${percentToNextLevel}%` }}
         ></div>
         <span
           className={styles.currentExperience}
-          style={{ left: `${percenteToNextLevel}%` }}
+          style={{ left: `${percentToNextLevel}%` }}
         >
           <Tooltip>
-            <img src={level} alt="{percenteToNextLevel} xp" />
+            <div>
+              <Level />
+            </div>
             <p>{currentExperience} xp</p>
           </Tooltip>
         </span>

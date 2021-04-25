@@ -80,13 +80,15 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
 
   useEffect(() => {
     const times = timeSinceInitTime();
-    console.log(times);
+
     if (isActive && time > 0 && times.minutes >= 0) {
       countDownTimeout = workerTimers.setTimeout(() => {
-        setTime(time - 1);
+        if (isActive) {
+          setTime(time - 1);
 
-        setMinutes(times.minutes);
-        setSeconds(times.seconds);
+          setMinutes(times.minutes);
+          setSeconds(times.seconds);
+        }
       }, 1000);
     } else if (
       isActive &&
@@ -112,19 +114,18 @@ const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const startCountDown = () => {
     setIsActive(true);
     setInitTime(performance ? performance.now() : Date.now());
-    // console.log("Countdown starts");
   };
 
   const resetCountDown = () => {
-    if (countDownTimeout) {
-      workerTimers.clearTimeout(countDownTimeout);
-    }
     setIsActive(false);
     setHasFinished(false);
     setTime(defaultTime());
     setInitTime(null);
     setMinutes(maxMinutes);
     setSeconds(0);
+    if (countDownTimeout) {
+      workerTimers.clearTimeout(countDownTimeout);
+    }
   };
 
   const setMaxMinutes = (newMinutes: number) => {
