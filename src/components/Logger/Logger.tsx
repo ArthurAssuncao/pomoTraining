@@ -9,7 +9,9 @@ const Logger = () => {
   const el = useRef(null);
 
   useEffect(() => {
-    el.current.scrollTop = 0;
+    if (el && el.current) {
+      el.current.scrollTop = 0;
+    }
   });
 
   return (
