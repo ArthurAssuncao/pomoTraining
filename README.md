@@ -23,9 +23,9 @@
 </p>
 
 <p align="center">
-	<a href="README.MD" alt="README em Português">PT-BR</a>
+	<a href="README.md" alt="README em Português">PT-BR</a>
      |
-    <a href="README_EN.MD" alt="README in English">EN</a>
+    <a href="README_EN.md" alt="README in English">EN</a>
 </p>
 
 ### :link: Acesse em [https://pomotraining.vercel.app/](https://pomotraining.vercel.app/).
